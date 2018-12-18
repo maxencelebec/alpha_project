@@ -11,24 +11,7 @@
 
 <body>
 
-<div class="header">
-
-  <div class="header_left">
-    <a href="home.html" class="logo"> <img id="logo" src="alphish3.png" width="132px"> </a>
-    <form class="formulaire">
-      <input class="rechercher" type="text" align="center" placeholder="Recherche">
-      <button type="submit" value="OK" class="fas fa-search"></button>   
-    </form> 
-  </div>
-
-  <div class="header_right">
-    <a class="fas fa-user" href="#home"></a>
-    <a class="fas fa-bell" href="#MyPage"></a>
-    <a href="parameters.html" class="fas fa-cog"></a>
-    <a href="connexion.html" class="fas fa-power-off"></a>
-  </div>
-
-</div>
+<div class="header" th:insert="header"> </div>
 
 <div class="main1">
   <div class="titre">Modifier mon profil</div>

@@ -82,20 +82,72 @@ a.active {
 .contenu{
 	display:grid;
 	grid-template-columns: 1fr 2fr;
-}
-
-.colonne_gauche{
+	margin-top:30px;
+	grid-gap:5%;
 	
 }
 
-.colonne_droite{
-	background:purple;
+.colonne_gauche{
+	margin-left:10%;
 }
-
 .photo{
-	background:blue;
+	background:white;
+	border-radius:10px;
+	width:150px;
+	height:150px;
+	margin-bottom:20px;
+}
+.pseudo{
+	margin-left:20px;
+	margin-bottom:20px;
 }
 .amis{
-	background:green;
+	border-radius:10px;
+	background:white;
+	height : 250px;
+	overflow:auto;
 }
+
+
+.colonne_droite{
+	border-radius:10px;
+	background:white;
+	margin-right:10%;
+}
+.recherche{
+	margin-top:10px;
+	margin-bottom:10px;
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap:10%;
+}
+.publi{
+	margin-left:10%;
+}
+.filtre{
+	margin-right:10%;
+}
+.publications{
+	margin: auto 20px;
+	margin-bottom:20px;
+}
+
+.infos{
+	margin-top:10px;
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap:10%;
+	margin-bottom:20px;
+}
+.delete{
+	margin-left:100px;
+	cursor:pointer;
+}
+
+.reponses{
+	margin-top:20px;
+}
+
+
+
 

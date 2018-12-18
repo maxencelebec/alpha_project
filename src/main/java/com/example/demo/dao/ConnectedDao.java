@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+/*package com.example.demo.dao;
 
 import java.util.List;
 
@@ -22,3 +22,4 @@ public interface ConnectedDao extends CrudRepository<User,Integer>{
 	@Transactional
 	void updateUser(@Param ("id") int id, @Param ("mail") String string, @Param ("password") String string2, @Param ("username") String string3);
 }
+*/

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title> Alpha </title>
@@ -14,10 +14,22 @@
 <div class="header" th:insert="header"> </div>
 <div class="contenu">
 	<div class="colonne_gauche">
-		<div class="photo">a</div>
-		<div class="amis">a</div>
+		<div class="photo"></div>
+		<div class="pseudo">Maxence Lebec</div>
+		<div class="amis"></div>
 	</div>
-	<div class="colonne_droite">a</div>
+	<div class="colonne_droite">
+		<div style="margin-left:10px">Mes publications</div>
+		<form class="recherche" method="post">
+			<input type="text" class="publi" placeholder="Rechercher"/>
+			<select class="filtre">
+  				<option value="recent">Les plus récents</option>
+  				<option value="vu">Les plus vus</option>
+			</select>
+		</form>
+		<div th:include	="publication"></div>
+		<div th:include	="publication"></div>
+	</div>
 </div>
 
 </body>

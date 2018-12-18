@@ -1,0 +1,169 @@
+body
+{
+    padding:0;
+    margin:0;
+    width:auto;
+    font-family: Segoe UI Light, Georgia;
+    background: #e74c3c;
+}
+.header {
+  overflow: hidden;
+  background-color: #e74c3c;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  box-shadow: 0px 4px 30px #00000075;
+}
+
+a {
+  color : white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px; 
+  line-height: 25px;
+}
+
+.header_left{
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  float: left;
+}
+
+.formulaire{
+  margin: auto 10%;
+}
+.rechercher{
+  color: #e74c3c;
+  font-weight: 700;
+  width: 70%;  
+  font-size: 20px;
+  letter-spacing: 1px;
+  background: white;
+  border: none;
+  padding: 5px;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+}
+.formulaire .fas{
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 20px;
+  background: white;
+  border: none;
+  padding: 5px;
+  border-radius: 20px;
+  outline: none;
+}
+
+.header_right a:hover{
+  cursor: pointer;
+  text-decoration: none;
+  animation-name: example;
+  /*border-bottom: 3px solid #FAA200;*/
+  transform: translate(5%,5%);
+}
+
+a.active {
+  border-bottom: 3px solid #FAA200;
+}
+
+.header_right {
+  margin-left: 10%;
+  float: right;
+}
+.header_right a{
+   padding: 12px;
+}
+
+
+
+
+
+.main1{
+  color: #e74c3c;
+  margin: auto auto;
+  margin-top:20px;
+  background: white;
+  width: 45%;
+  height: 350px;
+  border-radius: 20px;
+}
+
+.main2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5%;
+  color: white;
+  margin: auto auto;
+  margin-top:20px;
+  width: 45%;
+  height: 100px;
+}
+.theme, .delete{
+  background: #e74c3c;
+  border-radius: 20px;
+}
+.titre{
+  padding: 8px;
+  margin-left: 10px;
+  font-size: 20px;
+  font-family: 'Ubuntu', sans-serif;
+
+}
+.modification{
+  margin-left:23%;
+  margin-top: 10px;
+
+}
+.change{
+  cursor: pointer;
+  margin-bottom: 18px;
+  font-weight: 700;
+  width: 70%;  
+  font-size: 15px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  padding: 5px;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  transition: 0.2s;
+}
+.change:hover{
+  box-shadow: 0px 0px 2px #00000075;
+}
+.change:focus{
+  box-shadow: 0px 0px 5px #00000075;
+}
+
+.valider{
+  border: solid 1px white;
+  color: white;
+  width: 70%;  
+  cursor: pointer;
+  font-size: 20px;
+  background: #e74c3c;
+  padding: 5px;
+  border-radius: 20px;
+  outline: none;
+  font-family: 'Ubuntu', sans-serif;
+  transition: 0.5s;
+}
+.valider:hover{
+  background: #ff5e57;
+}
+
+.main2 .valider{
+   width: 80%;
+   margin-left: 10%;
+   padding: 2px;
+}
+.theme, .delete{
+  background: white;
+  color:#e74c3c;
+}

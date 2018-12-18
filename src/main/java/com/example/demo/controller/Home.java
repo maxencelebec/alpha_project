@@ -18,6 +18,11 @@ public class Home {
 		return "parameters";
 	}
 	
+	@RequestMapping(value="/myPage", method=RequestMethod.GET)
+	public String redirectMyPage() {
+		return "myPage";
+	}
+	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String redirectHome() {
 		return "home";

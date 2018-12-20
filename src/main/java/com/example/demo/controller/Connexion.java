@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,12 +27,16 @@ public class Connexion {
 	}
 	
 	@RequestMapping(value="/connexion", method=RequestMethod.POST)
-	public String Login(@ModelAttribute(name="connexionForm") User user, Model model) {
+	public String Login(@ModelAttribute(name="connexionForm") User user, Model model, HttpSession session) {
 		String mail = user.getMail();
 		String password = user.getPassword();
-		String authentification = connexionInscriptionDao.authentificationUser(mail);
+		String authentification = connexionInscriptionDao.mdpUser(mail);
+		String name = connexionInscriptionDao.nameUser(mail);
+		String id_user = connexionInscriptionDao.idUser(mail);
 		if (authentification!=null) {
 			if (authentification.equals(password)) {
+				session.setAttribute("name",name);
+				session.setAttribute("id_user",id_user);
 				return "home";
 			}
 			else {

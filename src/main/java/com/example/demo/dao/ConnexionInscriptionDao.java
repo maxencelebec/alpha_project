@@ -19,7 +19,13 @@ public interface ConnexionInscriptionDao extends CrudRepository<User,Integer>{
 	List<User> takeBdd(@Param ("id") int id);
 	
 	@Query("SELECT password FROM User WHERE mail = :mail ")
-	String authentificationUser(@Param ("mail") String mail);
+	String mdpUser(@Param ("mail") String mail);
+	
+	@Query("SELECT name FROM User WHERE mail = :mail ")
+	String nameUser(@Param ("mail") String mail2);
+	
+	@Query("SELECT id FROM User WHERE mail = :mail ")
+	String idUser(@Param ("mail") String mail2);
 	
 	@Modifying
 	@Query(value ="INSERT INTO user (mail, password, name, surname, username) VALUES (:mail, :password, :name, :surname, :username)", nativeQuery =true)

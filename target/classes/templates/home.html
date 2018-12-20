@@ -14,10 +14,10 @@
 <div class="header" th:insert="header"> </div>
 
 <div class="poster">
-	<form method="post" action="#" class="newpost">
-		<textarea rows="5" cols="40" placeholder="New Post..."></textarea>
-		
-		<input type="submit" value="Share" />
+	<form method="post" class="newpost" th:action="@{/publication}" th:object="${publicationForm}">
+		<input type="text" placeholer="Titre..." name="titre"/>
+		<textarea rows="5" cols="40" placeholder="New Post..." name="contenu"></textarea>
+		<input type="submit" value="Publier" />
 	</form>
 </div>
 

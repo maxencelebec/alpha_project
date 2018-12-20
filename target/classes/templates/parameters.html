@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title> Alpha </title>
@@ -14,7 +14,7 @@
 <div class="header" th:insert="header"> </div>
 
 <div class="main1">
-  <div class="titre">Modifier mon profil</div>
+  <div class="titre">Modifier votre profil  <name th:text="${session.name}"></name></div>
   <form class="modification">
     <input class="change" type="text" align="center" placeholder="pseudo">
     <input class="change" type="text" align="center" placeholder="email">

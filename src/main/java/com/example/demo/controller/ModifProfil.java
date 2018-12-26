@@ -45,6 +45,7 @@ public class ModifProfil {
 			return "parameters";
 		}
 		connexionInscriptionDao.modifProfil(mail, newPassword, username, id_user);
-		return "home";
+		model.addAttribute("error","Tout a fonctionné à merveille !!");
+		return "parameters";
 	}
 }

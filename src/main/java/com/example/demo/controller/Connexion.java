@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dao.ConnexionInscriptionDao;
+import com.example.demo.dao.PostDao;
 import com.example.demo.model.User;
 
 @Controller
@@ -20,6 +21,9 @@ public class Connexion {
 
 	@Autowired
 	private ConnexionInscriptionDao connexionInscriptionDao;
+	
+	@Autowired
+	private PostDao postDao;
 	
 	@RequestMapping(value="/inscription", method=RequestMethod.GET)
 	public String getLoginForm() {
@@ -37,6 +41,7 @@ public class Connexion {
 			if (authentification.equals(password)) {
 				session.setAttribute("name",name);
 				session.setAttribute("id_user",id_user);
+				model.addAttribute("sujet", postDao.findAll());
 				return "home";
 			}
 			else {

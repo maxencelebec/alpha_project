@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,12 +15,12 @@ public class Post {
 	@GeneratedValue
 	private int id;
 	private int id_user;
-	private int date;
+	private Date date;
 	private String titre;
 	private String contenu;
 	private int list_like;
 	
-	public Post(int id, int id_user, int date, String titre, String contenu, int list_like) {
+	public Post(int id, int id_user, Date date, String titre, String contenu, int list_like) {
 		this.id = id;
 		this.id_user = id_user;
 		this.date = date;
@@ -43,10 +45,10 @@ public class Post {
 	public void setId_user(int id_user) {
 		this.id_user = id_user;
 	}
-	public int getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(int date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getTitre() {

@@ -26,24 +26,22 @@
 	
 	    Posts
 	    
-	    	<fieldset>
-		    <legend>Subject : Yoooooo</legend>
-		  		<p>Bonjour ! Vous qui être entrain de coder ce site (moisi) et qui essayez
-de nuire au bon déroulement du projet ... de votre projet ! Vous vous torpillez vous même :/.
-Je trouve cela scandaleux, mais bon chacun son point de vue :s. Personne n'est parfait et si
-cela peut vous rassurer, surtout pas vous ! Bizz </p>
-		  	
-		  	<div class="likes">146 J'aimes</div>
-			  	<fieldset>
-		   		<legend>Answers</legend>
-		   			<fieldset>
-		   			<legend>From Lucas du 75</legend>
-		   				<p>Ferme la et travaille au lieu d'inventer du texte et de perdre 
-ton temps. Tu te crois supérieur ? En réalité je te marche dessus sombre chameau unijambiste constipé !</p>
-		   		
-		  			</fieldset>
-		   		
-		  		</fieldset>
+	    	<fieldset th:each="sujet : ${sujet}">
+			    <legend>Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet></legend>
+			  		<p th:text="${sujet.contenu}"> </p>
+			  	
+			  	<div class="likes" th:text="${sujet.list_like}"></div>
+				  	<fieldset>
+			   		<legend>Answers</legend>
+			   			<fieldset>
+			   			<legend>From Lucas du 75</legend>
+			   				<p>Ferme la et travaille au lieu d'inventer du texte et de perdre 
+							   ton temps. Tu te crois supérieur ? En réalité je te marche dessus 
+							   sombre chameau unijambiste constipé !</p>
+			   		
+			  			</fieldset>
+			   		
+			  		</fieldset>
 		    </fieldset>
 	</div>
 	

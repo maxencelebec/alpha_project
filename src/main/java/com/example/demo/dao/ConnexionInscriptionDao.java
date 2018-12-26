@@ -21,6 +21,9 @@ public interface ConnexionInscriptionDao extends CrudRepository<User,Integer>{
 	@Query("SELECT password FROM User WHERE mail = :mail ")
 	String mdpUser(@Param ("mail") String mail);
 	
+	@Query("SELECT password FROM User WHERE id = :id ")
+	String passwordUser(@Param ("id") Integer integer);
+	
 	@Query("SELECT name FROM User WHERE mail = :mail ")
 	String nameUser(@Param ("mail") String mail2);
 	
@@ -31,4 +34,10 @@ public interface ConnexionInscriptionDao extends CrudRepository<User,Integer>{
 	@Query(value ="INSERT INTO user (mail, password, name, surname, username) VALUES (:mail, :password, :name, :surname, :username)", nativeQuery =true)
 	@Transactional
 	void insertBdd(@Param ("mail") String string, @Param ("password") String string2, @Param ("name") String string3, @Param ("surname") String string4 ,@Param ("username") String string5);
+
+	@Modifying
+	@Query(value ="UPDATE user SET mail= :mail, password = :password, username= :username WHERE id= :id", nativeQuery =true)
+	@Transactional
+	void modifProfil(@Param ("mail") String string, @Param ("password") String string2 ,@Param ("username") String string3, @Param ("id") Integer integer);
+
 }

@@ -27,8 +27,29 @@
   				<option value="vu">Les plus vus</option>
 			</select>
 		</form>
-		<div th:include	="publication"></div>
-		<div th:include	="publication"></div>
+		<fieldset th:if="${sujet.id_user}==${session.id_user}" class="publications" th:each="sujet : ${sujet}">
+			<legend>Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet></legend>
+			<div class="infos">
+				<div class="date" th:text="${sujet.date}"></div>
+				<div class="like" th:text="${sujet.list_like}"></div>
+				<button class="delete">X</button>
+			</div>
+			<div class="text" th:text="${sujet.contenu}"></div>
+			
+			<div class="reponses" th:each="commentaire : ${commentaire}">
+				<fieldset th:if="${commentaire.id_post}==${sujet.id}">
+					<legend th:text="${commentaire.date}"></legend>
+					<div th:if="${commentaire.id_post}==${sujet.id}" th:text="${commentaire.contenu}"></div>
+				</fieldset>
+			</div>
+			<form method="post" th:action="@{/myPageCommentaire}" th:object="${myPageCommentaireForm}">
+				<textarea rows="3" cols="100" placeholder="Commentez..." name="contenu"></textarea>
+				<input type="hidden" th:value="${sujet.id}" name="id_post"/>
+				<input type="submit" value="Publier" />
+			</form>
+			
+			
+		</fieldset>
 	</div>
 </div>
 

@@ -33,10 +33,12 @@
 			  	<div class="likes" th:text="${sujet.list_like}"></div>
 				  	<fieldset>
 			   		<legend>Answers</legend>
-			   			<fieldset th:each="commentaire : ${commentaire}">
-			   				<legend th:if="${commentaire.id_post}==${sujet.id}" th:text="${commentaire.date}"></legend>
-			   				<p th:if="${commentaire.id_post}==${sujet.id}" th:text="${commentaire.contenu}"></p>
-			  			</fieldset>
+			   			<div th:each="commentaire : ${commentaire}">
+				   			<fieldset th:if="${commentaire.id_post}==${sujet.id}">
+				   				<legend th:text="${commentaire.date}"></legend>
+				   				<p th:if="${commentaire.id_post}==${sujet.id}" th:text="${commentaire.contenu}"></p>
+				  			</fieldset>
+			   			</div>
 			  			
 			   			<fieldset>
 			   				<legend>Votre réponse</legend>

@@ -35,7 +35,9 @@ public class Home {
 	}
 	
 	@RequestMapping(value="/myPage", method=RequestMethod.GET)
-	public String redirectMyPage() {
+	public String redirectMyPage(Model model) {
+		model.addAttribute("sujet", postDao.findAll());
+		model.addAttribute("commentaire", commentaireDao.findAll());
 		return "myPage";
 	}
 	
@@ -59,7 +61,7 @@ public class Home {
 		Date date = new Date(System.currentTimeMillis());
 		String date2 = date.toString();
 		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
-		postDao.insertPost(date2, id_user, contenu, 0, titre);
+		postDao.insertPost(date2, 3, contenu, 0, titre);
 		model.addAttribute("sujet", postDao.findAll());
 		model.addAttribute("commentaire", commentaireDao.findAll());
 		return "home";

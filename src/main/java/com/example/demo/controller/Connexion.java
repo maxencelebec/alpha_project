@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dao.CommentaireDao;
 import com.example.demo.dao.ConnexionInscriptionDao;
 import com.example.demo.dao.PostDao;
 import com.example.demo.model.User;
@@ -24,6 +22,9 @@ public class Connexion {
 	
 	@Autowired
 	private PostDao postDao;
+	
+	@Autowired
+	private CommentaireDao commentaireDao;
 	
 	@RequestMapping(value="/inscription", method=RequestMethod.GET)
 	public String getLoginForm() {
@@ -42,6 +43,7 @@ public class Connexion {
 				session.setAttribute("name",name);
 				session.setAttribute("id_user",id_user);
 				model.addAttribute("sujet", postDao.findAll());
+				model.addAttribute("commentaire", commentaireDao.findAll());
 				return "home";
 			}
 			else {

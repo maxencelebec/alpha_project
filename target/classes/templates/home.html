@@ -16,7 +16,7 @@
 <div class="poster">
 	<form method="post" class="newpost" th:action="@{/publication}" th:object="${publicationForm}">
 		<input type="text" placeholer="Titre..." name="titre"/>
-		<textarea rows="5" cols="40" placeholder="New Post..." name="contenu"></textarea>
+		<textarea rows="5" cols="40" placeholder="Nouveau post..." name="contenu"></textarea>
 		<input type="submit" value="Publier" />
 	</form>
 </div>
@@ -33,14 +33,19 @@
 			  	<div class="likes" th:text="${sujet.list_like}"></div>
 				  	<fieldset>
 			   		<legend>Answers</legend>
-			   			<fieldset>
-			   			<legend>From Lucas du 75</legend>
-			   				<p>Ferme la et travaille au lieu d'inventer du texte et de perdre 
-							   ton temps. Tu te crois supérieur ? En réalité je te marche dessus 
-							   sombre chameau unijambiste constipé !</p>
-			   		
+			   			<fieldset th:each="commentaire : ${commentaire}">
+			   				<legend th:if="${commentaire.id_post}==${sujet.id}" th:text="${commentaire.date}"></legend>
+			   				<p th:if="${commentaire.id_post}==${sujet.id}" th:text="${commentaire.contenu}"></p>
 			  			</fieldset>
-			   		
+			  			
+			   			<fieldset>
+			   				<legend>Votre réponse</legend>
+			   				<form method="post" th:action="@{/commentaire}" th:object="${commentaireForm}">
+								<textarea rows="5" cols="40" placeholder="Commentez..." name="contenu"></textarea>
+								<input type="hidden" th:value="${sujet.id}" name="id_post"/>
+								<input type="submit" value="Publier" />
+							</form>
+			   			</fieldset>
 			  		</fieldset>
 		    </fieldset>
 	</div>

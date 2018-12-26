@@ -17,11 +17,11 @@
   <div class="titre">Modifier votre profil  <name th:text="${session.name}"></name></div>
   <div th:text="${error}"></div>
   <form class="modification" method="post" th:action="@{/modifProfil}" th:object="${modifProfilForm}">
-    <input class="change" type="text" align="center" placeholder="pseudo" name="username">
-    <input class="change" type="text" align="center" placeholder="email" name="mail">
-    <input class="change" type="text" align="center" placeholder="old password" name="oldPassword">
-    <input class="change" type="text" align="center" placeholder="new password" name="password">
-    <input class="change" type="text" align="center" placeholder="new password repeat" name="password2"></br>
+    <input class="change" type="text" align="center" placeholder="pseudo" name="username" required>
+    <input class="change" type="text" align="center" placeholder="email" name="mail" required>
+    <input class="change" type="text" align="center" placeholder="old password" name="oldPassword" required>
+    <input class="change" type="text" align="center" placeholder="new password" name="password" required>
+    <input class="change" type="text" align="center" placeholder="new password repeat" name="password2" required></br>
     <input type="submit" value="Valider" class="valider" />
   </form> 
 </div>

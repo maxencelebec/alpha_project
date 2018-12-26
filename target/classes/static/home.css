@@ -21,6 +21,16 @@ a {
   font-size: 25px; 
   line-height: 25px;
 }
+button{
+  color : white;
+  background:none;
+  border:none;
+  cursor : pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px; 
+  line-height: 25px;
+}
 
 .header_left{
   display: grid;
@@ -57,7 +67,7 @@ a {
   outline: none;
 }
 
-.header_right a:hover{
+.header_right a:hover, button:hover{
   cursor: pointer;
   text-decoration: none;
   animation-name: example;

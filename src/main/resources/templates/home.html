@@ -15,7 +15,7 @@
 
 <div class="poster">
 	<form method="post" class="newpost" th:action="@{/publication}" th:object="${publicationForm}">
-		<input type="text" placeholer="Titre..." name="titre"/>
+		<input type="text" placeholder="Titre..." name="titre"/>
 		<textarea rows="5" cols="40" placeholder="Nouveau post..." name="contenu"></textarea>
 		<input type="submit" value="Publier" />
 	</form>
@@ -24,9 +24,9 @@
 <div class="main">
 	<div class="posts">
 	
-	    Posts
+	   <h1> Posts </h1>
 	    
-	    	<fieldset th:each="sujet : ${sujet}">
+	    	<fieldset th:each="sujet : ${sujet}" class="subject">
 			    <legend>Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet></legend>
 			  		<p th:text="${sujet.contenu}"> </p>
 			  	

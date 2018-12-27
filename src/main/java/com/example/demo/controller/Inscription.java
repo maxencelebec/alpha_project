@@ -31,6 +31,6 @@ public class Inscription {
 
 		connexionInscriptionDao.insertBdd(mail,password,name, surname, username);
 		
-		return "home";
+		return "index";
 	}
 }

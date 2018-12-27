@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.dao.CommentaireDao;
 import com.example.demo.dao.ConnexionInscriptionDao;
+import com.example.demo.dao.LikesDao;
 import com.example.demo.dao.PostDao;
 import com.example.demo.model.Commentaire;
 import com.example.demo.model.Post;
@@ -28,6 +30,9 @@ public class Home {
 	
 	@Autowired
 	private CommentaireDao commentaireDao;
+	
+	@Autowired
+	private LikesDao likesDao;
 	
 	@RequestMapping(value="/parameters", method=RequestMethod.GET)
 	public String redirectParameters () {
@@ -76,6 +81,33 @@ public class Home {
 		String date2 = date.toString();
 		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
 		commentaireDao.insertCommentaire(contenu,date2,id_post,id_user);
+		model.addAttribute("sujet", postDao.findAll());
+		model.addAttribute("commentaire", commentaireDao.findAll());
+		return "home";
+	}
+	
+	@RequestMapping(value="/like", method=RequestMethod.GET)
+	public String ajouterRetirerLike(HttpSession session, Model model,
+									@RequestParam("id_post") Integer id_post) {
+		
+		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
+		
+		if (likesDao.checkLike(id_post, id_user).size()==0) {
+			//ajout d'un parametre dans la table likes avec id_post et id_user
+			likesDao.ajoutLike(id_post,id_user);
+		}
+		else {
+			//retirer un parametre dans la table likes avec id_post et id_user
+			likesDao.retirerLike(id_post,id_user);
+		}
+		
+		//modifie dans la table post la valeur de list_like
+		int count = 0;
+		for (int k=0; k<likesDao.listLikes(id_post).size();k++) {
+			count++;
+		}
+		likesDao.modifList_like(count,id_post);
+		
 		model.addAttribute("sujet", postDao.findAll());
 		model.addAttribute("commentaire", commentaireDao.findAll());
 		return "home";

@@ -30,7 +30,10 @@
 			    <legend>Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet></legend>
 			  		<p th:text="${sujet.contenu}"> </p>
 			  	
-			  	<div class="likes" th:text="${sujet.list_like}"></div>
+				  	<div style="display:flex">
+				  		<a th:href="@{/like(id_post=${sujet.id})}" class="liker">J'aime</a>
+				  		<div class="likes" style="margin-left:10px" th:text="${sujet.list_like}"></div>
+				  	</div>
 				  	<fieldset>
 			   		<legend>Answers</legend>
 			   			<div th:each="commentaire : ${commentaire}">

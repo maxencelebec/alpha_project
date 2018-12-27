@@ -102,11 +102,25 @@ a.active {
 	margin: auto auto;
 	margin-top: 20px;
 	width:70%;
+	background: white;
+	border-radius:20px;
+	margin-bottom: 20px;
 }
 
 .newposts {
 	display: grid;
 	grid-row-gap: 5%;
+}
+
+.titlenew{
+	border-radius:5px;
+	border:none;
+	padding:5px;
+	display: grid;
+	margin: 0 auto;
+	margin-bottom: 5px;
+	margin-top:5px;
+	background: rgba(136, 126, 126, 0.1);
 }
 
 textarea {
@@ -116,20 +130,24 @@ textarea {
     width: 70%;
     height: 100px;
     margin: auto auto;
-    border-radius:20px;
+    border-radius:10px;
+    padding:10px;
+    background: rgba(136, 126, 126, 0.1);
 }
+
 
 input[type=submit] {
 	display:grid;
 	border:none;
-	background:white;
 	border-radius:20px;
 	cursor:pointer;
-	width: 10%;
+	width: 100px;
 	margin: auto auto;
 	height: 20px;
 	margin-top:10px;
 	margin-bottom:10px;
+	background: #e74c3c;
+	color: white;
 }
 
 .main

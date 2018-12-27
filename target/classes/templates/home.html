@@ -15,9 +15,9 @@
 
 <div class="poster">
 	<form method="post" class="newpost" th:action="@{/publication}" th:object="${publicationForm}">
-		<input type="text" placeholder="Titre..." name="titre"/>
-		<textarea rows="5" cols="40" placeholder="Nouveau post..." name="contenu"></textarea>
-		<input type="submit" value="Publier" />
+		<input type="text" placeholder="Subject Title..." name="titre" class="titlenew"/>
+		<textarea rows="5" cols="40" placeholder="New post..." name="contenu"></textarea>
+		<input type="submit" value="Publier" class="newpostsubmit"/>
 	</form>
 </div>
 

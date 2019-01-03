@@ -158,6 +158,15 @@ a.active {
 	margin-top:20px;
 }
 
+::-webkit-scrollbar{
+	background-color:#e74c3c;
+	width:8px;
+}
+::-webkit-scrollbar-thumb{
+	background-color:white;
+	border-radius:50px;
+}
+
 
 
 

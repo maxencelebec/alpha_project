@@ -168,7 +168,14 @@ input[type=submit] {
 	margin-bottom: 30px;
 }
 
-
+::-webkit-scrollbar{
+	background-color:#e74c3c;
+	width:8px;
+}
+::-webkit-scrollbar-thumb{
+	background-color:white;
+	border-radius:50px;
+}
 
 
 

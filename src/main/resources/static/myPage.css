@@ -91,9 +91,11 @@ a.active {
 
 .contenu{
 	display:grid;
-	grid-template-columns: 1fr 2fr;
+	grid-template-columns: 1fr 5fr;
+	margin: auto auto;
 	margin-top:30px;
 	grid-gap:5%;
+	width:95%;
 	
 }
 
@@ -110,6 +112,9 @@ a.active {
 .pseudo{
 	margin-left:20px;
 	margin-bottom:20px;
+	color: #502571;
+	font-weight: bold;
+	font-size: 2em;
 }
 .amis{
 	border-radius:10px;
@@ -123,6 +128,7 @@ a.active {
 	border-radius:10px;
 	background:white;
 	margin-right:10%;
+	
 }
 .recherche{
 	margin-top:10px;
@@ -131,12 +137,40 @@ a.active {
 	grid-template-columns: 1fr 1fr;
 	grid-gap:10%;
 }
+
+
 .publi{
 	margin-left:10%;
+	background: rgba(136, 126, 126, 0.1);
+	border:none;
+	border-radius:5px;
+	padding:5px;
+	outline:none;
 }
+.publi:hover{
+	box-shadow:0px 0px 2px #00000075;
+}
+.publi:focus{
+	box-shadow: 0px 0px 5px #00000075;
+}
+
+
 .filtre{
 	margin-right:10%;
+	background: rgba(136, 126, 126, 0.1);
+	border:none;
+	border-radius:5px;
+	padding:5px;
+	outline:none;
 }
+.filtre:hover{
+	box-shadow:0px 0px 2px #00000075;
+}
+.filtre:focus{
+	box-shadow: 0px 0px 5px #00000075;
+}
+
+
 .publications{
 	margin: auto 20px;
 	margin-bottom:20px;
@@ -152,6 +186,42 @@ a.active {
 .delete{
 	margin-left:100px;
 	cursor:pointer;
+	color: red;
+}
+
+textarea {
+	width:95%;
+	background: rgba(136, 126, 126, 0.1);
+	border:none;
+	border-radius:5px;
+	padding:5px;
+	outline:none;
+	display: grid;
+	margin: auto auto;
+	margin-top:20px;
+}
+textarea:hover{
+	box-shadow:0px 0px 2px #00000075;
+}
+textarea:focus{
+	box-shadow: 0px 0px 5px #00000075;
+}
+
+input[type=submit] {
+	display:grid;
+	border:none;
+	border-radius:20px;
+	cursor:pointer;
+	width: 100px;
+	margin: auto auto;
+	height: 20px;
+	margin-top:10px;
+	margin-bottom:10px;
+	background: #e74c3c;
+	color: white;
+}
+input[type=submit]:hover{
+  background: #ff5e57;
 }
 
 .reponses{

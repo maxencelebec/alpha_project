@@ -24,4 +24,13 @@ public interface PostDao extends CrudRepository<Post,Integer>{
 	@Query("SELECT titre FROM Post")
 	List<Post> listPost();
 	
+	@Modifying
+	@Query(value ="DELETE FROM post WHERE id = :id_post", nativeQuery =true)
+	@Transactional
+	void retirerPost(@Param ("id_post") Integer integer);
+	
+	@Modifying
+	@Query(value ="DELETE FROM commentaire WHERE id_post = :id_post", nativeQuery =true)
+	@Transactional
+	void retirerCommentaires(@Param ("id_post") Integer integer);
 }

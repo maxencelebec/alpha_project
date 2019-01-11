@@ -42,6 +42,7 @@ public class Connexion {
 			if (authentification.equals(password)) {
 				session.setAttribute("name",name);
 				session.setAttribute("id_user",id_user);
+				model.addAttribute("user", connexionInscriptionDao.findAll());
 				model.addAttribute("sujet", postDao.findAll());
 				model.addAttribute("commentaire", commentaireDao.findAll());
 				return "home";

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.dao.CommentaireDao;
 import com.example.demo.dao.ConnexionInscriptionDao;
+import com.example.demo.dao.FriendDao;
 import com.example.demo.dao.LikesDao;
 import com.example.demo.dao.PostDao;
 import com.example.demo.model.Commentaire;
@@ -34,13 +35,19 @@ public class Home {
 	@Autowired
 	private LikesDao likesDao;
 	
+	@Autowired
+	private FriendDao friendDao;
+	
 	@RequestMapping(value="/parameters", method=RequestMethod.GET)
 	public String redirectParameters () {
 		return "parameters";
 	}
 	
 	@RequestMapping(value="/myPage", method=RequestMethod.GET)
-	public String redirectMyPage(Model model) {
+	public String redirectMyPage(Model model, HttpSession session) {
+		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
+		model.addAttribute("user", connexionInscriptionDao.findAll());
+		model.addAttribute("friend", friendDao.listAmi(id_user));
 		model.addAttribute("sujet", postDao.findAll());
 		model.addAttribute("commentaire", commentaireDao.findAll());
 		return "myPage";
@@ -48,6 +55,7 @@ public class Home {
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String redirectHome(Model model) {
+		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("sujet", postDao.findAll());
 		model.addAttribute("commentaire", commentaireDao.findAll());
 		return "home";
@@ -67,6 +75,8 @@ public class Home {
 		String date2 = date.toString();
 		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
 		postDao.insertPost(date2, id_user, contenu, 0, titre);
+		
+		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("sujet", postDao.findAll());
 		model.addAttribute("commentaire", commentaireDao.findAll());
 		return "home";
@@ -81,6 +91,8 @@ public class Home {
 		String date2 = date.toString();
 		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
 		commentaireDao.insertCommentaire(contenu,date2,id_post,id_user);
+		
+		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("sujet", postDao.findAll());
 		model.addAttribute("commentaire", commentaireDao.findAll());
 		return "home";
@@ -108,8 +120,31 @@ public class Home {
 		}
 		likesDao.modifList_like(count,id_post);
 		
+		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("sujet", postDao.findAll());
 		model.addAttribute("commentaire", commentaireDao.findAll());
+		return "home";
+	}
+	
+	@RequestMapping(value="/friend", method=RequestMethod.GET)
+	public String ajouterAmi(HttpSession session, Model model,
+									@RequestParam("id_friend") Integer id_friend) {
+		
+		
+		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
+		model.addAttribute("user", connexionInscriptionDao.findAll());
+		model.addAttribute("sujet", postDao.findAll());
+		model.addAttribute("commentaire", commentaireDao.findAll());
+		
+		if (id_user==id_friend) {
+			return "home";
+		}
+		else if (id_friend==friendDao.checkAmitie(id_user)){
+			return "home";
+		}
+		else {
+			friendDao.ajouterAmi(id_friend, id_user);
+		}
 		return "home";
 	}
 	

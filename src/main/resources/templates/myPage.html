@@ -16,7 +16,11 @@
 	<div class="colonne_gauche">
 		<div class="photo"></div>
 		<div class="pseudo"><name th:text="${session.name}"></div>
-		<div class="amis"></div>
+		<div class="amis">	<div style="font-family:bold">List d'amis :</div><br>
+			<div th:each="friend :${friend}">			
+				<div th:text="${friend}"></div>
+			</div>
+		</div>
 	</div>
 	<div class="colonne_droite">
 		<h1 style="margin-left:10px">Mes publications</h1>
@@ -32,7 +36,7 @@
 			<div class="infos">
 				<div class="date" th:text="${sujet.date}"></div>
 				<div class="like" th:text="${sujet.list_like}"></div>
-				<button class="delete">X</button>
+				<a class="delete"th:href="@{/delete(id_post=${sujet.id})}">X</a>
 			</div>
 			<div class="text" th:text="${sujet.contenu}"></div>
 			

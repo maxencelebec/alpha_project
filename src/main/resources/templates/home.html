@@ -23,23 +23,25 @@
 
 <div class="main">
 	<div class="posts">
-	
-	   <h1> Posts </h1>
-	    
+	   
 	    	<fieldset th:each="sujet : ${sujet}" class="subject">
-			    <legend>Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet></legend>
-			  		<p th:text="${sujet.contenu}"> </p>
+			    <legend style="font-size:25px;font-weight:bold;">Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet></legend>
+			  		<p class="contenusujet" th:text="${sujet.contenu}"> </p>
 			  	
-				  	<div style="display:flex">
+				  	<div class="like" style="display:flex">
 				  		<a th:href="@{/like(id_post=${sujet.id})}" class="liker">J'aime</a>
 				  		<div class="likes" style="margin-left:10px" th:text="${sujet.list_like}"></div>
 				  	</div>
-				  	<fieldset>
-			   		<legend>Answers</legend>
+				  	
+				  	<div class="trait"></div>
+				  	
+				  	<fieldset class="hide">
+			   		
 			   			<div th:each="commentaire : ${commentaire}">
-				   			<fieldset th:if="${commentaire.id_post}==${sujet.id}">
-				   				<legend th:text="${commentaire.date}"></legend>
-				   				<p th:if="${commentaire.id_post}==${sujet.id}" th:text="${commentaire.contenu}"></p>
+				   			<fieldset  class="hide2" th:if="${commentaire.id_post}==${sujet.id}">
+				   				<legend><img src="alphish_icon.png" style="width:30px;"></legend>
+				   				<div th:if="${commentaire.id_post}==${sujet.id}" th:text="${commentaire.contenu}"></div>
+				   				<div style="text-align:right;" th:text="${commentaire.date}" ></div>
 				  			</fieldset>
 			   			</div>
 			  			
@@ -53,16 +55,17 @@
 			   			</fieldset>
 			  		</fieldset>
 		    </fieldset>
+		    
 	</div>
 	
 	<div class="filter">
 		
 		<form method="post" action="#">
-			<input type="text" placeholder="Search for a subject..." />
+			<input class="filtreinput" type="text" placeholder="Recherher un sujet..." />
 		</form>
 		
-		<fieldset>
-	    <legend>Filter</legend>
+		<fieldset class="test">
+	    <legend>Filtre</legend>
 	    </fieldset>
 	
 	</div>

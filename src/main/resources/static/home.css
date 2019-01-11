@@ -101,7 +101,7 @@ a.active {
 	display: grid;
 	margin: auto auto;
 	margin-top: 20px;
-	width:70%;
+	width:75%;
 	background: white;
 	border-radius:20px;
 	margin-bottom: 20px;
@@ -163,6 +163,7 @@ input[type=submit] {
 .posts{
 	background:white;
 	border-radius:20px;
+	padding: 10px;
 }
 
 .subject {
@@ -179,10 +180,53 @@ input[type=submit] {
 }
 
 
+fieldset {
+	border-radius:10px;
+}
 
+.filtreinput{
+	border-radius:5px;
+}
 
+.test{
+	background:white;
+}
 
+fieldset {
+	border:black 1px solid;
+}
 
+.hide{
+	border:none;
+	margin-top:10px;
+}
+
+.hide legend{
+	font-size:25px;
+	font-weight:bold;
+}
+
+.hide2{
+	border:none;
+	background: rgba(136, 126, 126, 0.1);
+	margin: 10px;
+}
+
+.trait{
+	margin-top:60px;
+	background-color: black;
+	height: 1px;
+	width: 100%;
+}
+
+.like{
+	float:right;
+}
+
+.contenusujet{
+	font-weight:bold;
+	font-size:20px;
+}
 
 
 

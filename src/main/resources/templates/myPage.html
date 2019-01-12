@@ -16,7 +16,7 @@
 	<div class="colonne_gauche">
 		<div class="photo"></div>
 		<div class="pseudo"><name th:text="${session.name}"></div>
-		<div class="amis">	<div style="font-family:bold">List d'amis :</div><br>
+		<div class="amis">	<div style="font-family:bold">Liste d'amis :</div><br>
 			<div th:each="friend :${friend}">			
 				<div th:text="${friend}"></div>
 			</div>

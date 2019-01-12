@@ -30,6 +30,7 @@ button{
   text-decoration: none;
   font-size: 25px; 
   line-height: 25px;
+  padding:12px;
 }
 
 .header_left{
@@ -73,6 +74,7 @@ button{
   animation-name: example;
   /*border-bottom: 3px solid #FAA200;*/
   transform: translate(5%,5%);
+  box-shadow:0px 0px 5px #00000075;
 }
 
 a.active {
@@ -120,7 +122,14 @@ a.active {
 	margin: 0 auto;
 	margin-bottom: 5px;
 	margin-top:5px;
+	outline:none;
 	background: rgba(136, 126, 126, 0.1);
+}
+.titlenew:hover{
+	box-shadow:0px 0px 2px #00000075;
+}
+.titlenew:focus{
+	box-shadow: 0px 0px 5px #00000075;
 }
 
 textarea {
@@ -132,7 +141,15 @@ textarea {
     margin: auto auto;
     border-radius:10px;
     padding:10px;
+    outline:none;
     background: rgba(136, 126, 126, 0.1);
+}
+
+textarea:hover{
+	box-shadow:0px 0px 2px #00000075;
+}
+textarea:focus{
+	box-shadow: 0px 0px 5px #00000075;
 }
 
 

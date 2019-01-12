@@ -7,14 +7,50 @@
     </form> 
   </div>
 
+	
   <div class="header_right">
     <a class="fas fa-user" href="/myPage"></a>
-    <button class="fas fa-bell"></button>
-  
+    <button class="fas fa-bell" id="notif"></button>
+  		<div id="myChart" width="200" height="200">
+  			<ul>
+  				<li>test 1 test 1 test</li>
+  				<li>test 2 test 2 test Test 2</li>
+  				<li>test 3</li>
+  			</ul>
+  		</div>
     <a href="/parameters" class="fas fa-cog"></a>
     <a href="/connexion" class="fas fa-power-off"></a>
   </div>
+	
+  <script type="text/javascript">
   
+  var x = document.getElementById("notif");
+  var y = 0;
+  
+  test();
+  
+  function test() {
+	  if (y == 0) {
+	 	 document.getElementById("myChart").style.display ='none';
+	  }
+  }
+  
+  x.onclick = function cacache() {
+	  
+	  if (y == 0) {
+		  document.getElementById("myChart").style.display ='block';
+		  y = 1;
+	  }
+	  else {
+		  document.getElementById("myChart").style.display ='none';
+		  y = 0;
+	  }
+	  
+  }
+  
+  
+  
+  </script>
 
   
   

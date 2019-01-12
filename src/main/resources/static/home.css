@@ -7,7 +7,7 @@ body
     background: #e74c3c;
 }
 .header {
-  overflow: hidden;
+  overflow: visible;
   background-color: #e74c3c;
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -21,6 +21,7 @@ a {
   font-size: 25px; 
   line-height: 25px;
 }
+
 button{
   color : white;
   background:none;
@@ -68,7 +69,7 @@ button{
   outline: none;
 }
 
-.header_right a:hover, button:hover{
+.header_right a:hover,button:hover{
   cursor: pointer;
   text-decoration: none;
   animation-name: example;
@@ -77,8 +78,50 @@ button{
   box-shadow:0px 0px 5px #00000075;
 }
 
+
+.header_right {
+	position: relative;
+	margin-right: 10%;
+    float: right;
+}
+
 a.active {
   border-bottom: 3px solid #FAA200;
+}
+
+.header_right a{
+   padding: 12px;
+}
+
+#myChart {
+	position: absolute;
+	left:50px;
+	top:50px;
+	background-color: #e74c3c;
+	color: white;
+}
+
+ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+li {
+	list-style-type: none;
+	padding-right: 10px;
+	padding-left: 10px;
+	border-bottom: 2px solid white;
+	padding-top: 5px;
+	padding-bottom:5px;
+}
+
+#myChart ul li:last-child {
+	border-bottom: none;
+}
+
+#myChart ul li:hover {
+	cursor:pointer;
+	background: #ff5e57;
 }
 
 .liker{
@@ -91,13 +134,7 @@ a.active {
 	padding-left : 5px;
 }
 
-.header_right {
-  margin-left: 10%;
-  float: right;
-}
-.header_right a{
-   padding: 12px;
-}
+
 
 .poster{
 	display: grid;
@@ -165,6 +202,9 @@ input[type=submit] {
 	margin-bottom:10px;
 	background: #e74c3c;
 	color: white;
+}
+input[type=submit]:hover{
+  background: #ff5e57;
 }
 
 

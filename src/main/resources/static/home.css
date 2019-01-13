@@ -74,7 +74,7 @@ button{
   text-decoration: none;
   animation-name: example;
   /*border-bottom: 3px solid #FAA200;*/
-  transform: translate(5%,5%);
+  
   box-shadow:0px 0px 5px #00000075;
 }
 

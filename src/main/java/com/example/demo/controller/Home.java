@@ -139,7 +139,7 @@ public class Home {
 		if (id_user==id_friend) {
 			return "home";
 		}
-		else if (id_friend==friendDao.checkAmitie(id_user)){
+		else if (friendDao.checkAmitie(id_user,id_friend)!=null){
 			return "home";
 		}
 		else {

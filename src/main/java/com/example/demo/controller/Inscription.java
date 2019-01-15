@@ -27,9 +27,9 @@ public class Inscription {
 		String name = user.getName();
 		String surname = user.getSurname();
 		String username = user.getUsername();
-		
+		String image = user.getImage();
 
-		connexionInscriptionDao.insertBdd(mail,password,name, surname, username);
+		connexionInscriptionDao.insertBdd(mail,password,name, surname, username, image);
 		
 		return "index";
 	}

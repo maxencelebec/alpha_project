@@ -17,6 +17,7 @@ public class User {
 	private String username;
 	private String mail;
 	private String password;
+	private String image;
 	
 	
 	
@@ -27,8 +28,17 @@ public class User {
 		this.username = username;
 		this.mail = mail;
 		this.password = password;
+		this.image=image;
 	}
 	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public int getId() {
 		return id;
 	}

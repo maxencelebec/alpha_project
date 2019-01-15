@@ -13,7 +13,7 @@ import org.springframework.data.repository.query.Param;
 import com.example.demo.model.Commentaire;
 
 public interface CommentaireDao extends CrudRepository<Commentaire,Integer>{
-	ArrayList<Commentaire> findAll();
+	ArrayList<Commentaire> findAllByOrderByIdAsc();
 	
 	@Modifying 
 	@Query(value ="INSERT INTO commentaire (contenu, date, id_post, id_user) VALUES (:contenu, :date, :id_post, :id_user)", nativeQuery =true)

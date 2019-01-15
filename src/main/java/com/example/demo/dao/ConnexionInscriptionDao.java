@@ -31,9 +31,9 @@ public interface ConnexionInscriptionDao extends CrudRepository<User,Integer>{
 	String idUser(@Param ("mail") String mail2);
 	
 	@Modifying
-	@Query(value ="INSERT INTO user (mail, password, name, surname, username) VALUES (:mail, :password, :name, :surname, :username)", nativeQuery =true)
+	@Query(value ="INSERT INTO user (mail, password, name, surname, username, image) VALUES (:mail, :password, :name, :surname, :username, :image)", nativeQuery =true)
 	@Transactional
-	void insertBdd(@Param ("mail") String string, @Param ("password") String string2, @Param ("name") String string3, @Param ("surname") String string4 ,@Param ("username") String string5);
+	void insertBdd(@Param ("mail") String string, @Param ("password") String string2, @Param ("name") String string3, @Param ("surname") String string4 ,@Param ("username") String string5, @Param ("image") String string6);
 
 	@Modifying
 	@Query(value ="UPDATE user SET mail= :mail, password = :password, username= :username WHERE id= :id", nativeQuery =true)

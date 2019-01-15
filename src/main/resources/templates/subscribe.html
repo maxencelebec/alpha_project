@@ -19,21 +19,25 @@
 
 <form class="form1" method="post" th:action="@{/inscription}" th:object="${inscriptionForm}" >
 	<div class="block_left">
-		<input class="un " type="text" align="center" placeholder="mail" name="mail">
-	    <input class="un " type="text" align="center" placeholder="confirmMail" name="confirmMail">
-	    <input class="pass" type="password" align="center" placeholder="password" name="password">
-	    <input class="pass" type="password" align="center" placeholder="confirmPassword" name="confirPassword">
+		<input class="un " type="text" align="center" placeholder="mail" name="mail" required>
+	    <input class="un " type="text" align="center" placeholder="confirmMail" name="confirmMail" required>
+	    <input class="pass" type="password" align="center" placeholder="password" name="password" required>
+	    <input class="pass" type="password" align="center" placeholder="confirmPassword" name="confirPassword" required>
 	</div>
 	<div class="block_right">
-		<input class="un " type="text" align="center" placeholder="name" name="name">
-	    <input class="un " type="text" align="center" placeholder="surname" name="surname">
-	    <input class="pass" type="text" align="center" placeholder="username" name="username">
-	    <button type="submit" class="submit" align="center">Validate</button>
+		<input class="un " type="text" align="center" placeholder="name" name="name" required>
+	    <input class="un " type="text" align="center" placeholder="surname" name="surname" required>
+	    <input class="pass" type="text" align="center" placeholder="username" name="username"required>
+	    <div>
+		    <input type="radio" name="image" value="molecule.png"><img src="molecule.png" style="width:50px">
+		    <input type="radio" name="image" value="nurse.png"><img src="nurse.png" style="width:50px">
+		    <input type="radio" name="image" value="ballon.png"><img src="ballon.png" style="width:50px">
+	    </div>
 	</div>
+	<button type="submit" class="submit" align="center">Validate</button>
 </form>
 
 </div>
-	<a href="home.html" style="color:white">suite</a>
      
 </body>
 

@@ -14,7 +14,7 @@ import org.springframework.data.repository.query.Param;
 import com.example.demo.model.Post;
 
 public interface PostDao extends CrudRepository<Post,Integer>{
-	ArrayList<Post> findAll();
+	ArrayList<Post> findAllByOrderByIdAsc();
 	
 	@Modifying
 	@Query(value ="INSERT INTO post (date, id_user, contenu, list_like, titre) VALUES (:date, :id_user, :contenu, :list_like, :titre)", nativeQuery =true)

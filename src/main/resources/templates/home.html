@@ -41,7 +41,7 @@
 				   			<fieldset  class="hide2" th:if="${commentaire.id_post}==${sujet.id}">
 				   				<legend th:each="user : ${user}">
 					   				<div th:if="${commentaire.id_user}==${user.id}">
-					   					<img src="alphish_icon.png" style="width:30px"/>
+					   					<img th:src="${user.image}" style="width:30px"/>
 					   					<a th:href="@{/friend(id_friend=${commentaire.id_user})}" th:text="${user.username}" style="color:black"></a>
 					   				</div>
 				   				</legend>

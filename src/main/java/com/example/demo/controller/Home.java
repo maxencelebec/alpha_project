@@ -48,16 +48,16 @@ public class Home {
 		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
 		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("friend", friendDao.listAmi(id_user));
-		model.addAttribute("sujet", postDao.findAll());
-		model.addAttribute("commentaire", commentaireDao.findAll());
+		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
+		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
 		return "myPage";
 	}
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String redirectHome(Model model) {
 		model.addAttribute("user", connexionInscriptionDao.findAll());
-		model.addAttribute("sujet", postDao.findAll());
-		model.addAttribute("commentaire", commentaireDao.findAll());
+		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
+		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
 		return "home";
 	}
 	
@@ -77,8 +77,8 @@ public class Home {
 		postDao.insertPost(date2, id_user, contenu, 0, titre);
 		
 		model.addAttribute("user", connexionInscriptionDao.findAll());
-		model.addAttribute("sujet", postDao.findAll());
-		model.addAttribute("commentaire", commentaireDao.findAll());
+		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
+		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
 		return "home";
 	}
 	
@@ -93,8 +93,8 @@ public class Home {
 		commentaireDao.insertCommentaire(contenu,date2,id_post,id_user);
 		
 		model.addAttribute("user", connexionInscriptionDao.findAll());
-		model.addAttribute("sujet", postDao.findAll());
-		model.addAttribute("commentaire", commentaireDao.findAll());
+		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
+		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
 		return "home";
 	}
 	
@@ -121,8 +121,8 @@ public class Home {
 		likesDao.modifList_like(count,id_post);
 		
 		model.addAttribute("user", connexionInscriptionDao.findAll());
-		model.addAttribute("sujet", postDao.findAll());
-		model.addAttribute("commentaire", commentaireDao.findAll());
+		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
+		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
 		return "home";
 	}
 	
@@ -133,8 +133,8 @@ public class Home {
 		
 		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
 		model.addAttribute("user", connexionInscriptionDao.findAll());
-		model.addAttribute("sujet", postDao.findAll());
-		model.addAttribute("commentaire", commentaireDao.findAll());
+		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
+		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
 		
 		if (id_user==id_friend) {
 			return "home";

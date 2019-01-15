@@ -43,8 +43,8 @@ public class Connexion {
 				session.setAttribute("name",name);
 				session.setAttribute("id_user",id_user);
 				model.addAttribute("user", connexionInscriptionDao.findAll());
-				model.addAttribute("sujet", postDao.findAll());
-				model.addAttribute("commentaire", commentaireDao.findAll());
+				model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
+				model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
 				return "home";
 			}
 			else {

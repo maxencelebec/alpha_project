@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title> Alpha </title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="alphish_icon.png" />
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+<div>
+	<h1>users :</h1> 
+	<div th:each="user : ${user}">
+		<span th:text="${user.username}"></span>
+		<a th:href="@{/supprUser(id_user=${user.id})}">X</a>
+	</div>
+</div>
+
+
+<div> <h1>sujets :</h1>
+	<fieldset th:each="sujet : ${sujet}" class="subject">
+		<legend style="font-size:25px;font-weight:bold;">
+			<a th:href="@{/supprPost(id_post=${sujet.id})}">X</a>
+			Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet>
+			<!-- <span th:each="user : ${user}" th:if="${sujet.id_user}==${user.id}" th:text="${user.username}" style="color:black"></span>-->
+		</legend>
+		<p class="contenusujet" th:text="${sujet.contenu}"> </p>
+		<fieldset class="hide">
+			<div th:each="commentaire : ${commentaire}">
+				<fieldset  class="hide2" th:if="${commentaire.id_post}==${sujet.id}">
+					<legend th:each="user : ${user}" th:if="${commentaire.id_user}==${user.id}">
+						<a th:href="@{/supprCom(id_com=${commentaire.id})}">X</a>
+						<span th:text="${user.username}" style="color:black"></span>				   				
+					 </legend>
+					 <div th:if="${commentaire.id_post}==${sujet.id}" th:text="${commentaire.contenu}"></div>
+					 <div style="text-align:right;" th:text="${commentaire.date}" ></div>
+				</fieldset>
+			</div>
+		</fieldset>
+	</fieldset>
+</div>
+
+</body>
+</html>

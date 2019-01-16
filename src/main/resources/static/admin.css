@@ -1,0 +1,12 @@
+body
+{
+    padding:0;
+    margin:0;
+    width:auto;
+    font-family: Segoe UI Light, Georgia;
+}
+
+body{
+	display:grid;
+	grid-template-columns:1fr 3fr;
+}

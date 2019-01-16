@@ -30,8 +30,11 @@ public interface ConnexionInscriptionDao extends CrudRepository<User,Integer>{
 	@Query("SELECT id FROM User WHERE mail = :mail ")
 	String idUser(@Param ("mail") String mail2);
 	
+	@Query("SELECT type FROM User WHERE mail = :mail ")
+	int typeUser(@Param ("mail") String mail2);
+	
 	@Modifying
-	@Query(value ="INSERT INTO user (mail, password, name, surname, username, image) VALUES (:mail, :password, :name, :surname, :username, :image)", nativeQuery =true)
+	@Query(value ="INSERT INTO user (mail, password, name, surname, username, image, type) VALUES (:mail, :password, :name, :surname, :username, :image, 0)", nativeQuery =true)
 	@Transactional
 	void insertBdd(@Param ("mail") String string, @Param ("password") String string2, @Param ("name") String string3, @Param ("surname") String string4 ,@Param ("username") String string5, @Param ("image") String string6);
 
@@ -40,4 +43,39 @@ public interface ConnexionInscriptionDao extends CrudRepository<User,Integer>{
 	@Transactional
 	void modifProfil(@Param ("mail") String string, @Param ("password") String string2 ,@Param ("username") String string3, @Param ("id") Integer integer);
 
+	@Modifying
+	@Query(value ="DELETE FROM user WHERE id = :id_user", nativeQuery =true)
+	@Transactional
+	void supprimerUser(@Param ("id_user") Integer integer);
+	
+	@Modifying
+	@Query(value ="DELETE FROM post WHERE id_user = :id_user", nativeQuery =true)
+	@Transactional
+	void retirerPost(@Param ("id_user") Integer integer);
+	
+	@Modifying
+	@Query(value ="DELETE FROM post WHERE id = :id", nativeQuery =true)
+	@Transactional
+	void retirerPost2(@Param ("id") Integer integer);
+	
+	@Modifying
+	@Query(value ="DELETE FROM commentaire WHERE id_user = :id_user", nativeQuery =true)
+	@Transactional
+	void retirerCommentaires(@Param ("id_user") Integer integer);
+	
+	@Modifying
+	@Query(value ="DELETE FROM commentaire WHERE id = :id", nativeQuery =true)
+	@Transactional
+	void retirerCommentaires2(@Param ("id") Integer integer);
+	
+	@Modifying
+	@Query(value ="DELETE FROM friend WHERE id_user = :id_user OR id_friend= :id_user", nativeQuery =true)
+	@Transactional
+	void retirerAmitie(@Param ("id_user") Integer integer);
+	
+	@Modifying
+	@Query(value ="DELETE FROM likes WHERE id_user = :id_user", nativeQuery =true)
+	@Transactional
+	void retirerLikes(@Param ("id_user") Integer integer);
+	
 }

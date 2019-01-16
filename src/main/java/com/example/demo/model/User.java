@@ -18,6 +18,7 @@ public class User {
 	private String mail;
 	private String password;
 	private String image;
+	private int type;
 	
 	
 	
@@ -29,8 +30,20 @@ public class User {
 		this.mail = mail;
 		this.password = password;
 		this.image=image;
+		this.type=type;
 	}
 	
+	
+	public int getType() {
+		return type;
+	}
+
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+
 	public String getImage() {
 		return image;
 	}

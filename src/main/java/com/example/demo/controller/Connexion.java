@@ -45,7 +45,12 @@ public class Connexion {
 				model.addAttribute("user", connexionInscriptionDao.findAll());
 				model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
 				model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
-				return "home";
+				if (connexionInscriptionDao.typeUser(mail)==1) {
+					return "admin";
+				}
+				else {
+					return "home";
+				}
 			}
 			else {
 				return "index";

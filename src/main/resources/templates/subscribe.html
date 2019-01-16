@@ -29,12 +29,20 @@
 	    <input class="un " type="text" align="center" placeholder="surname" name="surname" required>
 	    <input class="pass" type="text" align="center" placeholder="username" name="username"required>
 	    <div>
-		    <input type="radio" name="image" value="molecule.png"><img src="molecule.png" style="width:50px">
-		    <input type="radio" name="image" value="nurse.png"><img src="nurse.png" style="width:50px">
-		    <input type="radio" name="image" value="ballon.png"><img src="ballon.png" style="width:50px">
+	    <p>Image de profil :</p>
+	    	<div class="flex_img">
+		    	<label for="mol"><img src="molecule.png"></label>
+		    	<label for="nur"><img src="nurse.png"></label>
+		    	<label for="bal"><img src="ballon.png"></label>
+	    	</div>
+	    	<div class="flex_radio">
+			    <input type="radio" id="mol" name="image" value="molecule.png">
+			    <input type="radio" id="nur" name="image" value="nurse.png">
+			    <input type="radio" id="bal" name="image" value="ballon.png">
+		    </div>
 	    </div>
 	</div>
-	<button type="submit" class="submit" align="center">Validate</button>
+	<input type="submit" class="submit" value="Valider">
 </form>
 
 </div>

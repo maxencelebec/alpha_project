@@ -17,17 +17,17 @@
 <div class="main">
 <p class="sign" align="center">Registration</p>
 
-<form class="form1" method="post" th:action="@{/inscription}" th:object="${inscriptionForm}" >
+<form class="form1" id="inscription" method="post" th:action="@{/inscription}" th:object="${inscriptionForm}" >
 	<div class="block_left">
-		<input class="un " type="text" align="center" placeholder="mail" name="mail" required>
-	    <input class="un " type="text" align="center" placeholder="confirmMail" name="confirmMail" required>
-	    <input class="pass" type="password" align="center" placeholder="password" name="password" required>
-	    <input class="pass" type="password" align="center" placeholder="confirmPassword" name="confirPassword" required>
+		<input class="un " type="text" align="center" placeholder="mail" name="mail" >
+	    <input class="un " type="text" align="center" placeholder="confirmMail" name="confirmMail" >
+	    <input class="pass" type="password" align="center" placeholder="password" name="password" >
+	    <input class="pass" type="password" align="center" placeholder="confirmPassword" name="confirmPassword" >
 	</div>
 	<div class="block_right">
-		<input class="un " type="text" align="center" placeholder="name" name="name" required>
-	    <input class="un " type="text" align="center" placeholder="surname" name="surname" required>
-	    <input class="pass" type="text" align="center" placeholder="username" name="username"required>
+		<input class="un " type="text" align="center" placeholder="name" name="name" >
+	    <input class="un " type="text" align="center" placeholder="surname" name="surname" >
+	    <input class="pass" type="text" align="center" placeholder="username" name="username">
 	    <div>
 	    <p>Image de profil :</p>
 	    	<div class="flex_img">
@@ -36,17 +36,63 @@
 		    	<label for="bal"><img src="ballon.png"></label>
 	    	</div>
 	    	<div class="flex_radio">
-			    <input type="radio" id="mol" name="image" value="molecule.png">
+			    <input type="radio" id="mol" name="image" value="molecule.png" checked>
 			    <input type="radio" id="nur" name="image" value="nurse.png">
 			    <input type="radio" id="bal" name="image" value="ballon.png">
 		    </div>
 	    </div>
 	</div>
-	<input type="submit" class="submit" value="Valider">
+	<input type="submit" class="submit" id="sub" value="Valider">
+	<span class="error"></span>
 </form>
+	
 
 </div>
+
+<script type="text/javascript">
+	
+	var x = document.getElementById('inscription');
+	
+		x.onsubmit = function validerInscription () {
+        	var a = document.forms["inscription"]["mail"].value;
+        	var b = document.forms["inscription"]["confirmMail"].value;
+        	var c = document.forms["inscription"]["name"].value;
+        	var d = document.forms["inscription"]["password"].value;
+        	var e = document.forms["inscription"]["confirmPassword"].value;
+        	var f = document.forms["inscription"]["surname"].value;
+        	var g = document.forms["inscription"]["username"].value;
+
+        	if (a == "" || b == "" || c == "" || d == "" || e == "" || f == "" || g == "") {
+				document.getElementsByClassName('error')[0].innerHTML = "Champ(s) Manquant(s)";
+				return false;
+        	}
+        	else {
+        		if (a == b) {
+        			if (d == e) {
+        				return true;
+        			}
+        			else {
+        				document.getElementsByClassName('error')[0].innerHTML = "Mots de passe différents";
+        				return false;
+        			}
+        		}
+        		else {
+        			document.getElementsByClassName('error')[0].innerHTML = "Mails différents";
+        			return false;
+        		}
+        		
+        	}
+		}
+				
+</script>
      
 </body>
-
+						
 </html>
+
+
+
+
+
+
+

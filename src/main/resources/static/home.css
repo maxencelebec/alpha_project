@@ -219,13 +219,13 @@ input[type=submit]:hover{
 }
 
 .posts{
-	background:white;
 	border-radius:20px;
-	padding: 10px;
 }
 
 .subject {
 	margin-bottom: 30px;
+	border: white 50px solid;
+	background: white;
 }
 
 ::-webkit-scrollbar{
@@ -239,7 +239,7 @@ input[type=submit]:hover{
 
 
 fieldset {
-	border-radius:10px;
+	border-radius:20px;
 }
 
 .filtreinput{

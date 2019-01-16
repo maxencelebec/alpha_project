@@ -22,31 +22,39 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="colonne_droite">
-		<h1 style="margin-left:10px">Mes publications</h1>
+		<div class="arnaque">
+		<h1 style="margin-left:4.5%">Mes publications</h1>
 		<form class="recherche" method="post">
 			<input type="text" class="publi" placeholder="Rechercher"/>
 			<select class="filtre">
   				<option value="recent">Les plus récents</option>
-  				<option value="vu">Les plus vus</option>
+  				<option value="vu">Les plus aimés</option>
 			</select>
 		</form>
+		</div>
+		
 		<fieldset th:if="${sujet.id_user}==${session.id_user}" class="publications" th:each="sujet : ${sujet}">
-			<legend>Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet></legend>
-			<div class="infos">
-				<div class="date" th:text="${sujet.date}"></div>
-				<div class="like" th:text="${sujet.list_like}"></div>
-				<a class="delete"th:href="@{/delete(id_post=${sujet.id})}">X</a>
-			</div>
-			<div class="text" th:text="${sujet.contenu}"></div>
 			
+			<legend style="font-size:25px;font-weight:bold;">Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet><a class="delete" th:href="@{/delete(id_post=${sujet.id})}">X</a></legend>
+			<div class="text" th:text="${sujet.contenu}"></div>
+			<div class="like" style="text-align:right;" th:text="${sujet.list_like}"></div>
+			<div class="date" style="text-align:right;" th:text="${sujet.date}"></div>
+			
+			<div class="trait"></div>
+					
 			<div class="reponses" th:each="commentaire : ${commentaire}">
-				<fieldset th:if="${commentaire.id_post}==${sujet.id}">
-					<legend th:text="${commentaire.date}"></legend>
+				<fieldset class="hide2" th:if="${commentaire.id_post}==${sujet.id}">
+					<legend th:each="user : ${user}" th:if="${commentaire.id_user}==${user.id}">
+					   					<img th:src="${user.image}" style="width:30px"/>
+					   					<a th:href="@{/friend(id_friend=${commentaire.id_user})}" th:text="${user.username}" style="color:black"></a>				   				
+				   	</legend>
 					<div th:if="${commentaire.id_post}==${sujet.id}" th:text="${commentaire.contenu}"></div>
+					<div class="date" style="text-align:right;" th:text="${commentaire.date}"></div>
 				</fieldset>
 			</div>
-			<form method="post" th:action="@{/myPageCommentaire}" th:object="${myPageCommentaireForm}">
+			<form method="post" style="margin-top:40px" th:action="@{/myPageCommentaire}" th:object="${myPageCommentaireForm}">
 				<textarea rows="3" cols="100" placeholder="Commentez..." name="contenu"></textarea>
 				<input type="hidden" th:value="${sujet.id}" name="id_post"/>
 				<input type="submit" value="Publier" />

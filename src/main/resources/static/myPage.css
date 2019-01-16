@@ -164,7 +164,6 @@ li {
 
 .colonne_droite{
 	border-radius:10px;
-	background:white;
 	margin-right:10%;
 	
 }
@@ -210,8 +209,10 @@ li {
 
 
 .publications{
-	margin: auto 20px;
-	margin-bottom:20px;
+	margin-bottom: 30px;
+	border: white 50px solid;
+	background: white;
+	border-radius: 20px;
 }
 
 .infos{
@@ -228,16 +229,18 @@ li {
 }
 
 textarea {
-	width:95%;
-	background: rgba(136, 126, 126, 0.1);
-	border:none;
-	border-radius:5px;
-	padding:5px;
-	outline:none;
 	display: grid;
-	margin: auto auto;
-	margin-top:20px;
+    resize: none;
+    border:none;
+    width: 70%;
+    height: 100px;
+    margin: auto auto;
+    border-radius:10px;
+    padding:10px;
+    outline:none;
+    background: rgba(136, 126, 126, 0.1);
 }
+
 textarea:hover{
 	box-shadow:0px 0px 2px #00000075;
 }
@@ -275,7 +278,28 @@ input[type=submit]:hover{
 	border-radius:50px;
 }
 
+.hide2{
+	border:none;
+	background: rgba(136, 126, 126, 0.1);
+	margin: 10px;
+	border-radius: 20px;
+}
 
+.trait{
+	margin-top:10px;
+	background-color: black;
+	height: 1px;
+	width: 100%;
+}
 
+.text{
+	font-weight:bold;
+	font-size:20px;
+}
 
-
+.arnaque {
+    background: white;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+}

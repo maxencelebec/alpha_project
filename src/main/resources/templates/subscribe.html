@@ -29,7 +29,7 @@
 	    <input class="un " type="text" align="center" placeholder="surname" name="surname" >
 	    <input class="pass" type="text" align="center" placeholder="username" name="username">
 	    <div>
-	    <p>Image de profil :</p>
+	    <p class="titleimgprofil">Image de profil :</p>
 	    	<div class="flex_img">
 		    	<label for="mol"><img src="molecule.png"></label>
 		    	<label for="nur"><img src="nurse.png"></label>
@@ -48,6 +48,7 @@
 	
 
 </div>
+
 
 <script type="text/javascript">
 	
@@ -77,7 +78,7 @@
         			}
         		}
         		else {
-        			document.getElementsByClassName('error')[0].innerHTML = "Mails différents";
+        			document.getElementsByClassName('error')[0].innerHTML = "<p>Mails différents</p>";
         			return false;
         		}
         		
@@ -85,7 +86,7 @@
 		}
 				
 </script>
-     
+      
 </body>
 						
 </html>

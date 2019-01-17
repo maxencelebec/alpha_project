@@ -29,7 +29,8 @@
 			  
 				    <span style="font-family:bold;" th:text="${sujet.titre}"></span>
 					<img th:src="${user.image}" style="width:30px;float:right;margin-left:25px"/>
-					<a th:text="${user.username}" style="color:black;float:right"></a>	
+					<ludo><a th:text="${user.username}" style="color:black;float:right"></a></ludo>	
+					
 				</legend>
 				
 			  		<p class="contenusujet" th:text="${sujet.contenu}"> </p>
@@ -86,19 +87,73 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 
+/*
+$(document).ready(function() {
+	
+	$('#categoryFilter').on("keyup", function() {
+			var inputValue = $(this).val().toLowerCase();
+			$("#filter ludo").filter(function() {
+				$(this).toggle($(this).text().toLowerCase().indexOf(inputValue) > -1)
+			});
+			alert('ok');
+	
+	
+	});
+	
+});
+
+*/
+/*
 (function($){
 	$('#categoryFilter').keyup(function(event){
-		var input = $(this);
-		var val = input.val();
+		var search = $(this).val();
+		var data = 'motclef=' + search;
+		if (search.length>0) {
+			
+			$.ajax({
+				type : "GET",
+				url : "home.java",
+				data : data,
+				success: function(server_response) {
+					
+					$('#categoryFilter').help;
+			},
+			});
+		}
+		/*
+		if(val == '') {
+			$('#filter ludo').show();
+			return true;
+		}
 		
-		var regexp = '\\b(.*)s(.*)\\b';
-		$('#filter').find('a').each(function(){
-			var a = $(this);
-			console.log(a);
+		var regexp = '\\b(.*)';
+		for (var i in val) {
+			regexp += '('+val[i]+')(.*)';
+		}
+		regexp += '\\b';
+		$('#filter ludo').show();
+		$('#filter').find('ludo').each(function(){
+			var ludo = $(this);
+			var resultats = ludo.text().match(new RegExp(regexp, 'i'));
+			if (resultats) {
+				var string = '';
+				for (var i in resultats) {
+					if(i > 0) {
+						string += resultats[i];
+					}
+				}
+				ludo.empty().append(string);
+				console.log(string);
+			} else {
+				ludo.parent().parent().hide();
+			}
 		})
-		
+		*/
+		/*
 	});
 })(jQuery);
+*/
+
 
 </script>
  

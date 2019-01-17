@@ -25,11 +25,11 @@
 	<div class="posts">
 	   
 	    	<fieldset th:each="sujet : ${sujet}" class="subject">
-			    <legend class="encoreuntest" style="font-size:25px;font-weight:bold;" th:each="user : ${user}" th:if="${sujet.id_user}==${user.id}">Sujet : 
+			    <legend id="filter" class="encoreuntest" style="font-size:25px;font-weight:bold;" th:each="user : ${user}" th:if="${sujet.id_user}==${user.id}">Sujet : 
 			  
-			    <span style="font-family:bold;" th:text="${sujet.titre}"></span>
-				<img th:src="${user.image}" style="width:30px;float:right;margin-left:25px"/>
-				<a th:text="${user.username}" style="color:black;float:right"></a>	
+				    <span style="font-family:bold;" th:text="${sujet.titre}"></span>
+					<img th:src="${user.image}" style="width:30px;float:right;margin-left:25px"/>
+					<a th:text="${user.username}" style="color:black;float:right"></a>	
 				</legend>
 				
 			  		<p class="contenusujet" th:text="${sujet.contenu}"> </p>
@@ -75,13 +75,33 @@
 		
 		<fieldset class="test">
 	    <legend>Filtre</legend>
+	    	<input type="text" name="category" id="categoryFilter" placeholder="Chercher par pseudo">
+	    	
 	    </fieldset>
 	
 	</div>
 </div>
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
 
+(function($){
+	$('#categoryFilter').keyup(function(event){
+		var input = $(this);
+		var val = input.val();
+		
+		var regexp = '\\b(.*)s(.*)\\b';
+		$('#filter').find('a').each(function(){
+			var a = $(this);
+			console.log(a);
+		})
+		
+	});
+})(jQuery);
+
+</script>
+ 
 
 
 

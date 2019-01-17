@@ -2,7 +2,7 @@
   <div class="header_left">
     <a href="/home" class="logo"> <img id="logo" src="alphish3.png" width="132px"> </a>
     <form class="formulaire">
-      <input class="rechercher" type="text" align="center" placeholder="Recherche">
+      <input class="rechercher" id="recherche" type="text" align="center" placeholder="Recherche">
       <button type="submit" value="OK" class="fas fa-search"></button>   
     </form> 
   </div>
@@ -21,36 +21,9 @@
     <a href="/parameters" class="fas fa-cog"></a>
     <a href="/connexion" class="fas fa-power-off"></a>
   </div>
-	
-  <script type="text/javascript">
-  
-  var x = document.getElementById("notif");
-  var y = 0;
-  
-  test();
-  
-  function test() {
-	  if (y == 0) {
-	 	 document.getElementById("myChart").style.display ='none';
-	  }
-  }
-  
-  x.onclick = function cacache() {
-	  
-	  if (y == 0) {
-		  document.getElementById("myChart").style.display ='block';
-		  y = 1;
-	  }
-	  else {
-		  document.getElementById("myChart").style.display ='none';
-		  y = 0;
-	  }
-	  
-  }
-  
-  
-  
-  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/notif.js"></script>
 
   
   

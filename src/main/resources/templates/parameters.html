@@ -30,13 +30,25 @@
 
   <div class="theme">
     <div class="titre">Contact</div>
-    <button type="submit" class="valider">Contact Admin</button>
+    <button type="submit" class="valideradmin">Contact Admin</button>
   </div>
 
   <div class="delete">
-    <div class="titre">Gestion</div>
-    <button type="submit" class="valider">Delete Account</button>
-  </div>
+    <div class="titre">Modifier photo de profil</div>
+    	<form method="post" th:action="@{/changePhoto}" th:object="${changePhotoForm}">
+		    <div class="flex_img">
+		    	<label for="mol"><img src="molecule.png"></label>
+		    	<label for="nur"><img src="nurse.png"></label>
+		    	<label for="bal"><img src="ballon.png"></label>
+		   	</div>
+		   	<div class="flex_radio">
+			    <input type="radio" id="mol" name="image" value="molecule.png" checked>
+			    <input type="radio" id="nur" name="image" value="nurse.png">
+			    <input type="radio" id="bal" name="image" value="ballon.png">
+		    </div>
+		    <input type="submit" value="Valider" class="valider">
+    	</form>
+   </div>
 
 </div>
 

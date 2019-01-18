@@ -199,9 +199,28 @@ li {
   outline: none;
   font-family: 'Ubuntu', sans-serif;
   transition: 0.5s;
+  margin-bottom:10px;
 }
-.valider:hover{
+.valider:hover, .valideradmin:hover{
   background: #ff5e57;
+}
+
+.valideradmin {
+	border: solid 1px white;
+	color: white;
+	width: 70%;  
+	cursor: pointer;
+	font-size: 20px;
+	background: #e74c3c;
+	padding: 5px;
+	border-radius: 20px;
+	outline: none;
+	font-family: 'Ubuntu', sans-serif;
+	transition: 0.5s;
+	margin-bottom:10px;
+	display:block;
+	margin:auto;
+	margin-top:25px;
 }
 
 .main2 .valider{
@@ -213,3 +232,38 @@ li {
   background: white;
   color:#e74c3c;
 }
+
+
+
+.flex_img img {
+	width:50px;
+	height:50px;
+	cursor:pointer;
+}
+
+
+.flex_img {
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content: space-evenly;
+	height:50px;
+}
+
+.flex_radio {
+	display:flex;
+	flex-direction:row;
+	flex-wrap:nowrap;
+	justify-content: space-evenly;
+	margin-bottom:10px;
+}
+
+
+
+
+
+
+
+
+
+

@@ -52,4 +52,14 @@ public class ModifProfil {
 		model.addAttribute("notifs", likesDao.notifs(id_user));
 		return "parameters";
 	}
+	
+	@RequestMapping(value="/changePhoto", method=RequestMethod.POST)
+	public String changePhoto(@ModelAttribute(name="changePhotoForm") User user,
+								HttpSession session) {
+			String image = user.getImage();
+			int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
+			connexionInscriptionDao.modifPhoto(image, id_user);
+			
+		return "parameters";
+	}
 }

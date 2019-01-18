@@ -78,4 +78,10 @@ public interface ConnexionInscriptionDao extends CrudRepository<User,Integer>{
 	@Transactional
 	void retirerLikes(@Param ("id_user") Integer integer);
 	
+	@Modifying
+	@Query(value ="UPDATE user SET image= :image WHERE id= :id", nativeQuery =true)
+	@Transactional
+	void modifPhoto(@Param ("image") String string, @Param ("id") Integer integer);
+	
+	
 }

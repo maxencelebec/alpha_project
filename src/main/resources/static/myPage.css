@@ -216,6 +216,7 @@ li {
 	border: white 50px solid;
 	background: white;
 	border-radius: 20px;
+	position: relative;
 }
 
 .infos{
@@ -225,10 +226,35 @@ li {
 	grid-gap:10%;
 	margin-bottom:20px;
 }
+
+.deletelegend {
+
+}
+
 .delete{
-	margin-left:100px;
 	cursor:pointer;
 	color: blue;
+	border-radius: 10px;
+	padding-left:10px;
+	padding-right:10px;
+	margin-left:10px;
+}
+
+.delete:hover {
+	box-shadow: 0px 0px 5px #00000075;
+	background-color:#00000075;
+}
+
+.delete_ami:hover {
+	box-shadow: 0px 0px 5px #00000075;
+	background-color:#00000075;
+}
+
+.delete_ami {
+	padding-left:5px;
+	padding-right:5px;
+	margin-left:5px;
+	border-radius:5px;
 }
 
 textarea {

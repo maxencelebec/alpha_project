@@ -38,7 +38,7 @@
 		
 		<fieldset th:if="${sujet.id_user}==${session.id_user}" class="publications" th:each="sujet : ${sujet}">
 			
-			<legend style="font-size:25px;font-weight:bold;">Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet><a class="delete" th:href="@{/delete(id_post=${sujet.id})}">Supprimer</a></legend>
+			<legend class="deletelegend" style="font-size:25px;font-weight:bold;">Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet><a class="delete" th:href="@{/delete(id_post=${sujet.id})}">X</a></legend>
 			<div class="text" th:text="${sujet.contenu}"></div>
 			<div class="like" style="text-align:right;" th:text="${sujet.list_like}"></div>
 			<div class="date" style="text-align:right;" th:text="${sujet.date}"></div>

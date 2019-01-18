@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title> Alpha </title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="alphish_icon.png" />
+    <link rel="stylesheet" href="friendPage.css">
+</head>
+
+<body>
+
+<div class="header" th:insert="header"> </div>
+<div class="contenu">
+	<div class="colonne_gauche">
+		<div class="photo"></div>
+		<div class="pseudo"><name th:text="${session.name}"></div>
+		<div class="amis">	<div style="font-family:bold">Liste d'amis :</div><br>
+			<div th:each="friend :${friend}">			
+				<div th:text="${friend}"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="colonne_droite">
+		<div class="arnaque">
+		<h1 style="margin-left:4.5%">Mes publications</h1>
+		<form class="recherche" method="post">
+			<input type="text" class="publi" placeholder="Rechercher"/>
+			<select class="filtre">
+  				<option value="recent">Les plus récents</option>
+  				<option value="vu">Les plus aimés</option>
+			</select>
+		</form>
+		</div>
+		
+		<fieldset th:if="${sujet.id_user}==${session.id_user}" class="publications" th:each="sujet : ${sujet}">
+			
+			<legend style="font-size:25px;font-weight:bold;">Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet></legend>
+			<div class="text" th:text="${sujet.contenu}"></div>
+			<div class="like" style="text-align:right;" th:text="${sujet.list_like}"></div>
+			<div class="date" style="text-align:right;" th:text="${sujet.date}"></div>
+			
+			<div class="trait"></div>
+					
+			<div class="reponses" th:each="commentaire : ${commentaire}">
+				<fieldset class="hide2" th:if="${commentaire.id_post}==${sujet.id}">
+					<legend th:each="user : ${user}" th:if="${commentaire.id_user}==${user.id}">
+					   					<img th:src="${user.image}" style="width:30px"/>
+					   					<a th:href="@{/friend(id_friend=${commentaire.id_user})}" th:text="${user.username}" style="color:black"></a>				   				
+				   	</legend>
+					<div th:if="${commentaire.id_post}==${sujet.id}" th:text="${commentaire.contenu}"></div>
+					<div class="date" style="text-align:right;" th:text="${commentaire.date}"></div>
+				</fieldset>
+			</div>
+			<form method="post" style="margin-top:40px" th:action="@{/myPageCommentaire}" th:object="${myPageCommentaireForm}">
+				<textarea rows="3" cols="100" placeholder="Commentez..." name="contenu"></textarea>
+				<input type="hidden" th:value="${sujet.id}" name="id_post"/>
+				<input type="submit" value="Publier" />
+			</form>
+			
+			
+		</fieldset>
+	</div>
+</div>
+
+</body>
+</html>

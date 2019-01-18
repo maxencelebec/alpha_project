@@ -15,7 +15,9 @@
 <div class="contenu">
 	<div class="colonne_gauche">
 		<div class="photo"></div>
-		<div class="pseudo"><name th:text="${session.name}"></div>
+		<div class="pseudo" th:each="user :${user}">
+			<a th:href="@{/friend(id_friend=${amiId})}" th:if="${user.id}==${amiId}" th:text="${user.username}"></a>
+		</div>
 		<div class="amis">	<div style="font-family:bold">Liste d'amis :</div><br>
 			<div th:each="friend :${friend}">			
 				<div th:text="${friend}"></div>
@@ -25,7 +27,7 @@
 	
 	<div class="colonne_droite">
 		<div class="arnaque">
-		<h1 style="margin-left:4.5%">Mes publications</h1>
+		<h1 style="margin-left:4.5%">Publications</h1>
 		<form class="recherche" method="post">
 			<input type="text" class="publi" placeholder="Rechercher"/>
 			<select class="filtre">
@@ -35,7 +37,7 @@
 		</form>
 		</div>
 		
-		<fieldset th:if="${sujet.id_user}==${session.id_user}" class="publications" th:each="sujet : ${sujet}">
+		<fieldset th:if="${sujet.id_user}==${amiId}" class="publications" th:each="sujet : ${sujet}">
 			
 			<legend style="font-size:25px;font-weight:bold;">Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet></legend>
 			<div class="text" th:text="${sujet.contenu}"></div>

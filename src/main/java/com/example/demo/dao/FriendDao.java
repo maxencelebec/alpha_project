@@ -29,6 +29,12 @@ public interface FriendDao extends CrudRepository<Friend,Integer>{
 	
 	@Query("SELECT id FROM User WHERE username= :username")
 	Integer getIdAmi(@Param ("username") String string);
+	
+	@Modifying
+	@Query(value ="DELETE FROM friend WHERE id_friend = :id_friend", nativeQuery =true)
+	@Transactional
+	void deleteAmi(@Param ("id_friend") Integer integer);
+	
 }
 
 

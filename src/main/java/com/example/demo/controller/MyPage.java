@@ -50,8 +50,8 @@ public class MyPage {
 
 		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("friend", friendDao.listAmi(id_user));
-		model.addAttribute("sujet", postDao.findAll());
-		model.addAttribute("commentaire", commentaireDao.findAll());
+		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
+		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
 		model.addAttribute("notifs", likesDao.notifs(id_user));
 		return "myPage";
 	}
@@ -64,8 +64,21 @@ public class MyPage {
 		postDao.retirerCommentaires(id_post);
 		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("friend", friendDao.listAmi(id_user));
-		model.addAttribute("sujet", postDao.findAll());
-		model.addAttribute("commentaire", commentaireDao.findAll());
+		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
+		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
+		model.addAttribute("notifs", likesDao.notifs(id_user));
+		return "myPage";
+	}
+	
+	@RequestMapping(value="/delAmi", method=RequestMethod.GET)
+	public String deleteAmi(HttpSession session, Model model,
+									@RequestParam("id_friend") Integer id_friend) {
+		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
+		friendDao.deleteAmi(id_friend);
+		model.addAttribute("user", connexionInscriptionDao.findAll());
+		model.addAttribute("friend", friendDao.listAmi(id_user));
+		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
+		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
 		model.addAttribute("notifs", likesDao.notifs(id_user));
 		return "myPage";
 	}

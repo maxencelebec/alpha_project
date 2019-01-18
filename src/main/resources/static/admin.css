@@ -4,9 +4,60 @@ body
     margin:0;
     width:auto;
     font-family: Segoe UI Light, Georgia;
+    background: #e74c3c;
 }
 
 body{
 	display:grid;
 	grid-template-columns:1fr 3fr;
+}
+
+.utilisateurs{
+	border-radius:5%;
+	background:white;
+	height : 250px;
+	overflow:auto;
+	padding: 5px;
+	margin-left:10%;
+	margin-top:15%;
+}
+
+.deco {
+	margin-top:5%;
+	margin-left:10%;
+}
+
+.colonne_droite{
+	border-radius:10px;
+	margin:5%;
+}
+
+.hide{
+	border:none;
+	margin-top:10px;
+}
+
+.hide2 {
+    border: none;
+    background: rgba(136, 126, 126, 0.1);
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.subject {
+    margin-bottom: 30px;
+    border: white 50px solid;
+    background: white;
+    border-radius: 20px;
+}
+
+.trait{
+	margin-top:20px;
+	background-color: black;
+	height: 1px;
+	width: 100%;
+}
+
+.encoreuntest{
+	width:100%;
 }

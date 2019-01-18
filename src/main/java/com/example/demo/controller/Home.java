@@ -50,14 +50,17 @@ public class Home {
 		model.addAttribute("friend", friendDao.listAmi(id_user));
 		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
 		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
+		model.addAttribute("notifs", likesDao.notifs(id_user));
 		return "myPage";
 	}
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String redirectHome(Model model) {
+	public String redirectHome(Model model, HttpSession session) {
+		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
 		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
 		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
+		model.addAttribute("notifs", likesDao.notifs(id_user));
 		return "home";
 	}
 	
@@ -79,6 +82,7 @@ public class Home {
 		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
 		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
+		model.addAttribute("notifs", likesDao.notifs(id_user));
 		return "home";
 	}
 	
@@ -95,6 +99,7 @@ public class Home {
 		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
 		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
+		model.addAttribute("notifs", likesDao.notifs(id_user));
 		return "home";
 	}
 	
@@ -123,6 +128,7 @@ public class Home {
 		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
 		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
+		model.addAttribute("notifs", likesDao.notifs(id_user));
 		return "home";
 	}
 	
@@ -135,6 +141,7 @@ public class Home {
 		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
 		model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
+		model.addAttribute("notifs", likesDao.notifs(id_user));
 		
 		if (id_user==id_friend) {
 			return "home";

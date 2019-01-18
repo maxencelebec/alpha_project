@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.dao.CommentaireDao;
 import com.example.demo.dao.ConnexionInscriptionDao;
 import com.example.demo.dao.FriendDao;
+import com.example.demo.dao.LikesDao;
 import com.example.demo.dao.PostDao;
 import com.example.demo.model.Commentaire;
 
@@ -33,6 +34,9 @@ public class MyPage {
 	@Autowired
 	private FriendDao friendDao;
 	
+	@Autowired
+	private LikesDao likesDao;
+	
 	@RequestMapping(value="/myPageCommentaire", method=RequestMethod.POST)
 	public String ajouterMonCommentaire(@ModelAttribute(name="myPageCommentaireForm") Commentaire commentaire,
 								 HttpSession session, Model model) {
@@ -48,6 +52,7 @@ public class MyPage {
 		model.addAttribute("friend", friendDao.listAmi(id_user));
 		model.addAttribute("sujet", postDao.findAll());
 		model.addAttribute("commentaire", commentaireDao.findAll());
+		model.addAttribute("notifs", likesDao.notifs(id_user));
 		return "myPage";
 	}
 	
@@ -61,6 +66,7 @@ public class MyPage {
 		model.addAttribute("friend", friendDao.listAmi(id_user));
 		model.addAttribute("sujet", postDao.findAll());
 		model.addAttribute("commentaire", commentaireDao.findAll());
+		model.addAttribute("notifs", likesDao.notifs(id_user));
 		return "myPage";
 	}
 }

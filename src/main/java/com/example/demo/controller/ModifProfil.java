@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dao.ConnexionInscriptionDao;
+import com.example.demo.dao.LikesDao;
 import com.example.demo.model.User;
 
 @Controller
@@ -19,6 +19,9 @@ public class ModifProfil {
 	
 	@Autowired
 	private ConnexionInscriptionDao connexionInscriptionDao;
+	
+	@Autowired
+	private LikesDao likesDao;
 	
 	@RequestMapping(value="/modifProfil", method=RequestMethod.POST)
 	public String modifProfil(@ModelAttribute(name="modifProfilForm") User user, 
@@ -46,6 +49,7 @@ public class ModifProfil {
 		}
 		connexionInscriptionDao.modifProfil(mail, newPassword, username, id_user);
 		model.addAttribute("error","Tout a fonctionné à merveille !!");
+		model.addAttribute("notifs", likesDao.notifs(id_user));
 		return "parameters";
 	}
 }

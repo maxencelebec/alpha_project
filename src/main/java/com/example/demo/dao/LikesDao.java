@@ -36,5 +36,6 @@ public interface LikesDao extends CrudRepository<Likes,Integer>{
 	@Transactional
 	void modifList_like(@Param ("list_like") Integer integer, @Param ("id_post") Integer integer2);
 
-
+	@Query("SELECT l.id_post FROM Likes l INNER JOIN Post p ON p.id=l.id_post WHERE p.id_user=:id_user ORDER BY l.id DESC")
+	List<Likes> notifs(@Param ("id_user") Integer integer);
 }

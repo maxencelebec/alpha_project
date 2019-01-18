@@ -12,10 +12,11 @@
     <a class="fas fa-user" href="/myPage"></a>
     <button class="fas fa-bell" id="notif"></button>
   		<div id="myChart" width="200" height="200">
-  			<ul>
-  				<li>test 1 test 1 test</li>
-  				<li>test 2 test 2 test Test 2</li>
-  				<li>test 3</li>
+  			<ul th:each="sujet : ${sujet}">
+  				<li th:each="notifs : ${notifs}" th:if="${sujet.id}==${notifs}" style="border-bottom:white 2px solid">
+  					<span>Vous avez un like sur le sujet :</span></br>
+  					<span  th:text="${sujet.titre}"></span>
+  				</li>
   			</ul>
   		</div>
     <a href="/parameters" class="fas fa-cog"></a>

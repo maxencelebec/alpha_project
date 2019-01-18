@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.dao.CommentaireDao;
 import com.example.demo.dao.ConnexionInscriptionDao;
+import com.example.demo.dao.LikesDao;
 import com.example.demo.dao.PostDao;
 import com.example.demo.model.User;
 
@@ -25,6 +26,9 @@ public class Connexion {
 	
 	@Autowired
 	private CommentaireDao commentaireDao;
+
+	@Autowired
+	private LikesDao likesDao;
 	
 	@RequestMapping(value="/inscription", method=RequestMethod.GET)
 	public String getLoginForm() {
@@ -45,6 +49,8 @@ public class Connexion {
 				model.addAttribute("user", connexionInscriptionDao.findAll());
 				model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
 				model.addAttribute("commentaire", commentaireDao.findAllByOrderByIdAsc());
+				int user_id = Integer.parseInt((String) session.getAttribute("id_user"));
+				model.addAttribute("notifs", likesDao.notifs(user_id));
 				if (connexionInscriptionDao.typeUser(mail)==1) {
 					return "admin";
 				}

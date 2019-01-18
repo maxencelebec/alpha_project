@@ -141,10 +141,13 @@ li {
 }
 .photo{
 	background:white;
-	border-radius:10px;
+    border-radius: 50%;
+    border: white 3px solid;
 	width:150px;
 	height:150px;
 	margin-bottom:20px;
+	display: block;
+    margin: auto;
 }
 .pseudo{
 	margin-left:20px;
@@ -225,7 +228,7 @@ li {
 .delete{
 	margin-left:100px;
 	cursor:pointer;
-	color: red;
+	color: blue;
 }
 
 textarea {

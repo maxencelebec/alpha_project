@@ -14,7 +14,7 @@
 <div class="header" th:insert="header"> </div>
 <div class="contenu">
 	<div class="colonne_gauche">
-		<div class="photo"></div>
+		<img class="photo" th:each="user : ${user}" th:if="${amiId}==${user.id}" th:src="${user.image}">
 		<div class="pseudo" th:each="user :${user}">
 			<a th:href="@{/friend(id_friend=${amiId})}" th:if="${user.id}==${amiId}" th:text="${user.username}"></a>
 		</div>

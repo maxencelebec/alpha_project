@@ -141,10 +141,11 @@ li {
 }
 .photo{
 	background:white;
-	border-radius:10px;
+	border-radius:50%;
 	width:150px;
 	height:150px;
 	margin-bottom:20px;
+	border: white 3px solid;
 }
 .pseudo{
 	margin-left:20px;

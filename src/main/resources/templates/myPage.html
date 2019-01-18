@@ -14,11 +14,12 @@
 <div class="header" th:insert="header"> </div>
 <div class="contenu">
 	<div class="colonne_gauche">
-		<div class="photo"></div>
-		<div class="pseudo"><name th:text="${session.name}"></div>
-		<div class="amis">	<div style="font-family:bold">Liste d'amis :</div><br>
-			<div th:each="friend :${friend}">			
-				<div th:text="${friend}"></div>
+		<img th:each="user : ${user}" th:if="${session.id_user}==${user.id}" th:src="${user.image}" class="photo">
+		<p class="pseudo" style="color:white;text-align:center;margin:10px"><name th:text="${session.name}"></p>
+		<div class="amis">	<div style="font-family:bold;font-size:24px">Liste d'amis :</div><br>
+			<div style="font-weight:bold" th:each="friend :${friend}">			
+				<span th:text="${friend}"></span>
+				<a th:each="user :${user}" th:if="${friend}==${user.username}" style="color:blue;font-size:15px;" class="delete_ami" th:href="@{/delAmi(id_friend=${user.id})}">X</a>		
 			</div>
 		</div>
 	</div>
@@ -37,7 +38,7 @@
 		
 		<fieldset th:if="${sujet.id_user}==${session.id_user}" class="publications" th:each="sujet : ${sujet}">
 			
-			<legend style="font-size:25px;font-weight:bold;">Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet><a class="delete" th:href="@{/delete(id_post=${sujet.id})}">X</a></legend>
+			<legend style="font-size:25px;font-weight:bold;">Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet><a class="delete" th:href="@{/delete(id_post=${sujet.id})}">Supprimer</a></legend>
 			<div class="text" th:text="${sujet.contenu}"></div>
 			<div class="like" style="text-align:right;" th:text="${sujet.list_like}"></div>
 			<div class="date" style="text-align:right;" th:text="${sujet.date}"></div>

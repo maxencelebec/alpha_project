@@ -10,23 +10,36 @@
 </head>
 
 <body>
-<div>
-	<h1>users :</h1> 
+<div class="colonne_gauche">
+<div class="utilisateurs">
+	<div style=";margin-bot:10px;font-size:25px;font-weight:bold;;">Utilisateurs :</div> 
 	<div th:each="user : ${user}">
 		<span th:text="${user.username}"></span>
 		<a th:href="@{/supprUser(id_user=${user.id})}">X</a>
 	</div>
 </div>
 
+<div class="deco">
+    <a href="/connexion" class="fas fa-power-off" style="color:white;text-decoration:none">  Deconnexion</a>
+</div>
 
-<div> <h1>sujets :</h1>
+</div>
+
+
+<div class="colonne_droite">
 	<fieldset th:each="sujet : ${sujet}" class="subject">
-		<legend style="font-size:25px;font-weight:bold;">
+		<legend class="encoreuntest" style="font-size:25px;font-weight:bold;">
 			<a th:href="@{/supprPost(id_post=${sujet.id})}">X</a>
 			Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet>
-			<!-- <span th:each="user : ${user}" th:if="${sujet.id_user}==${user.id}" th:text="${user.username}" style="color:black"></span>-->
+			<span th:each="user : ${user}" th:if="${sujet.id_user}==${user.id}">
+					<img th:src="${user.image}" style="width:30px;float:right;margin-left:25px"/>
+					<a th:text="${user.username}" style="color:black;float:right"></a>
+			</span>		
 		</legend>
 		<p class="contenusujet" th:text="${sujet.contenu}"> </p>
+		
+		<div class="trait"></div>
+		
 		<fieldset class="hide">
 			<div th:each="commentaire : ${commentaire}">
 				<fieldset  class="hide2" th:if="${commentaire.id_post}==${sujet.id}">

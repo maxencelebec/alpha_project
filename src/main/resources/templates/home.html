@@ -29,7 +29,7 @@
 			  
 				    <span style="font-family:bold;" th:text="${sujet.titre}"></span>
 					<img th:src="${user.image}" style="width:30px;float:right;margin-left:25px"/>
-					<ludo><a th:text="${user.username}" style="color:black;float:right"></a></ludo>	
+					<ludo><a th:href="@{/friend(id_friend=${sujet.id_user})}" th:text="${user.username}" style="color:black;float:right"></a></ludo>	
 					
 				</legend>
 				

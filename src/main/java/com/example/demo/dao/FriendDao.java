@@ -26,4 +26,13 @@ public interface FriendDao extends CrudRepository<Friend,Integer>{
 	
 	@Query("SELECT username FROM User WHERE id IN (SELECT id_friend FROM Friend WHERE id_user=:id_user)")
 	List<String> listAmi(@Param ("id_user") Integer integer);
+	
+	@Query("SELECT id FROM User WHERE username= :username")
+	Integer getIdAmi(@Param ("username") String string);
 }
+
+
+
+
+
+

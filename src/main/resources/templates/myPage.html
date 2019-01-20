@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="alphish_icon.png" />
-    <link rel="stylesheet" href="myPage.css">
+    <link rel="stylesheet" href="css/myPage.css">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
 			
 			<legend class="deletelegend" style="font-size:25px;font-weight:bold;">Sujet : <sujet style="font-family:bold;" th:text="${sujet.titre}"></sujet><a class="delete" th:href="@{/delete(id_post=${sujet.id})}">X</a></legend>
 			<div class="text" th:text="${sujet.contenu}"></div>
-			<div class="like" style="text-align:right;" th:text="${sujet.list_like}"></div>
+			<div class="like" style="text-align:right;" th:text="'likes : ' + ${sujet.list_like}"></div>
 			<div class="date" style="text-align:right;" th:text="${sujet.date}"></div>
 			
 			<div class="trait"></div>

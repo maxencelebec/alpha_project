@@ -29,6 +29,7 @@ public class ModifProfil {
 							  @RequestParam("password2") String password2,
 							  HttpSession session, Model model) {
 		
+		if (session==null) {return "index";}
 		String mail = user.getMail();
 		String username = user.getUsername();
 		String newPassword = user.getPassword();
@@ -56,6 +57,7 @@ public class ModifProfil {
 	@RequestMapping(value="/changePhoto", method=RequestMethod.POST)
 	public String changePhoto(@ModelAttribute(name="changePhotoForm") User user,
 								HttpSession session) {
+			if (session==null) {return "index";}
 			String image = user.getImage();
 			int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
 			connexionInscriptionDao.modifPhoto(image, id_user);

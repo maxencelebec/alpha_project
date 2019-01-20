@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,13 @@ public class Connexion {
 				return "index";
 			}
 		}
+		return "index";
+	}
+	
+	@RequestMapping(value="/deconnexion", method=RequestMethod.GET)
+	public String deco(HttpServletRequest request) {
+		HttpSession session=request.getSession(); 
+		session.invalidate();
 		return "index";
 	}
 	

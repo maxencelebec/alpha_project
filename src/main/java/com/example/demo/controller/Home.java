@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.sql.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,9 @@ public class Home {
 	}
 	
 	@RequestMapping(value="/myPage", method=RequestMethod.GET)
-	public String redirectMyPage(Model model, HttpSession session) {
+	public String redirectMyPage(Model model, HttpSession session, HttpServletRequest request) {
+		HttpSession session2=request.getSession(false); 
+		if (session2==null) {return "index";}
 		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
 		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("friend", friendDao.listAmi(id_user));
@@ -55,7 +58,9 @@ public class Home {
 	}
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String redirectHome(Model model, HttpSession session) {
+	public String redirectHome(Model model, HttpSession session, HttpServletRequest request) {
+		HttpSession session2=request.getSession(false); 
+		if (session2==null) {return "index";}
 		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
 		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());
@@ -71,7 +76,9 @@ public class Home {
 	
 	@RequestMapping(value="/publication", method=RequestMethod.POST)
 	public String ajouterContenu(@ModelAttribute(name="publicationForm") Post post,
-								 HttpSession session, Model model) {
+								 HttpSession session, Model model, HttpServletRequest request) {
+		HttpSession session2=request.getSession(false); 
+		if (session2==null) {return "index";}
 		String contenu = post.getContenu();
 		String titre = post.getTitre();
 		Date date = new Date(System.currentTimeMillis());
@@ -88,7 +95,9 @@ public class Home {
 	
 	@RequestMapping(value="/commentaire", method=RequestMethod.POST)
 	public String ajouterCommentaire(@ModelAttribute(name="commentaireForm") Commentaire commentaire,
-								 HttpSession session, Model model) {
+								 HttpSession session, Model model, HttpServletRequest request) {
+		HttpSession session2=request.getSession(false); 
+		if (session2==null) {return "index";}
 		String contenu = commentaire.getContenu();	
 		int id_post = commentaire.getId_post();
 		Date date = new Date(System.currentTimeMillis());
@@ -105,7 +114,9 @@ public class Home {
 	
 	@RequestMapping(value="/like", method=RequestMethod.GET)
 	public String ajouterRetirerLike(HttpSession session, Model model,
-									@RequestParam("id_post") Integer id_post) {
+									@RequestParam("id_post") Integer id_post, HttpServletRequest request) {
+		HttpSession session2=request.getSession(false); 
+		if (session2==null) {return "index";}
 		
 		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
 		
@@ -134,9 +145,10 @@ public class Home {
 	
 	@RequestMapping(value="/friend", method=RequestMethod.GET)
 	public String ajouterAmi(HttpSession session, Model model,
-									@RequestParam("id_friend") Integer id_friend) {
+									@RequestParam("id_friend") Integer id_friend, HttpServletRequest request) {
 		
-		
+		HttpSession session2=request.getSession(false); 
+		if (session2==null) {return "index";}
 		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
 		model.addAttribute("user", connexionInscriptionDao.findAll());
 		model.addAttribute("sujet", postDao.findAllByOrderByIdAsc());

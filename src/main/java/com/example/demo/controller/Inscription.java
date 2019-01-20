@@ -35,11 +35,13 @@ public class Inscription {
 		String surname = user.getSurname();
 		String username = user.getUsername();
 		String image = user.getImage();
+		String mailValid = connexionInscriptionDao.idUser(mail);
+		String usernameValid = connexionInscriptionDao.usernameUser(username);
 		
 		Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 		Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(mail);
 		
-		if (matcher.find() && mail.equals(confirmMail) && password.equals(confirmPassword)) {
+		if (matcher.find() && mail.equals(confirmMail) && password.equals(confirmPassword) && mailValid==null && usernameValid==null) {
 			connexionInscriptionDao.insertBdd(mail,password,name, surname, username, image);
 		}
 		else {

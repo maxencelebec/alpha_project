@@ -35,7 +35,8 @@ public class FriendPage {
 	private FriendDao friendDao;
 	
 	@RequestMapping(value="/amiPage", method=RequestMethod.POST)
-	public String goPageAmi(@ModelAttribute(name="amiPageForm") User user, Model model) {
+	public String goPageAmi(@ModelAttribute(name="amiPageForm") User user,HttpSession session,  Model model) {
+			if (session==null) {return "index";}
 			String pseudo = user.getUsername();
 			model.addAttribute("user", connexionInscriptionDao.findAll());
 			model.addAttribute("sujet", postDao.findAll());
@@ -52,29 +53,6 @@ public class FriendPage {
 			
 		return "friendPage";
 	}
-	
-	
-	/*
-	
-	@RequestMapping(value="/amiPage", method=RequestMethod.POST)
-	public String ajouterMonCommentaire(@ModelAttribute(name="myPageCommentaireForm") Commentaire commentaire,
-								 HttpSession session, Model model) {
-		String contenu = commentaire.getContenu();	
-		int id_post = commentaire.getId_post();
-		Date date = new Date(System.currentTimeMillis());
-		String date2 = date.toString();
-		int id_user = Integer.parseInt((String) session.getAttribute("id_user"));
-		commentaireDao.insertCommentaire(contenu,date2,id_post,id_user);
-		
-
-		model.addAttribute("user", connexionInscriptionDao.findAll());
-		model.addAttribute("friend", friendDao.listAmi(id_user));
-		model.addAttribute("sujet", postDao.findAll());
-		model.addAttribute("commentaire", commentaireDao.findAll());
-		return "friendPage";
-		
-		
-	}*/
 	
 }
 

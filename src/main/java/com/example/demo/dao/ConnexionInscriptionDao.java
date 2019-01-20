@@ -30,8 +30,12 @@ public interface ConnexionInscriptionDao extends CrudRepository<User,Integer>{
 	@Query("SELECT id FROM User WHERE mail = :mail ")
 	String idUser(@Param ("mail") String mail2);
 	
+	@Query("SELECT id FROM User WHERE username = :username ")
+	String usernameUser(@Param ("username") String mail2);
+	
 	@Query("SELECT type FROM User WHERE mail = :mail ")
 	int typeUser(@Param ("mail") String mail2);
+	
 	
 	@Modifying
 	@Query(value ="INSERT INTO user (mail, password, name, surname, username, image, type) VALUES (:mail, :password, :name, :surname, :username, :image, 0)", nativeQuery =true)
